@@ -1,18 +1,19 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews, INew } from "./@types";
+import { INewsContext, INewsProviderProps, INews, INew, IaddNew } from "./@types";
 
 export const NewsContext = createContext({} as INewsContext);
 
 export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [newsList, setNewsList] = useState<INews[]>([]);
   const [loading, setLoading] = useState(false);
+  const [selectNews, setSelectNews] = useState<INews>();
 
   useEffect(() => {
     const loadNewsData = async () => {
       try {
         setLoading(true);
-        const { data } = await api.get("/posts?_embed=likes", {});
+        const { data } = await api.get<INews[]>("/posts?_embed=likes", {});
         setNewsList(data);
       } catch (error) {
         console.log(error);
@@ -23,10 +24,10 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     loadNewsData();
   }, []);
 
-  const getNew = async (id: number) => {
+  const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      const { data } = await api.get(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get<INew>(`/posts/${id}?_embed=likes`);
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -49,7 +50,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post("/users/techs", formData, {
+      const { data } = await api.post<IaddNew>("/users/techs", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -62,10 +63,26 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-
+  const updatePost = async (formData: any, newId) => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem("@TOKEN");
+      const { data } = await api.post<IaddNew>("/users/techs", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(data)
+      
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <NewsContext.Provider value={{ loading, newsList, getNew, addPost }}>
+    <NewsContext.Provider value={{ loading, newsList, selectNews, setSelectNews }}>
       {children}
     </NewsContext.Provider>
   );

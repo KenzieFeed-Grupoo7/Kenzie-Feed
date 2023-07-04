@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface INewsProviderProps {
   children: React.ReactNode;
 }
@@ -21,16 +23,17 @@ export interface INew {
     likes: any[];
 }
 
-export interface IaddPostForm {
+export interface IaddNew {
   title: string;
   description: string;
   owner: string;
   userId: number;
-  id: number;
-  likes: any[];
+  image: string;
 }
 
 export interface INewsContext {
-  loading: boolean;
-  newsList: INews[];
+  loading: boolean
+  newsList: INews[]
+  selectNews: undefined|INews
+  setSelectNews: Dispatch<SetStateAction<undefined | INews>>
 }
