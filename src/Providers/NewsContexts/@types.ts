@@ -23,14 +23,6 @@ export interface INew {
     likes: any[];
 }
 
-export interface IaddNew {
-  title: string;
-  description: string;
-  owner: string;
-  userId: number;
-  image: string;
-}
-
 export interface INewsContext {
   loading: boolean
   newsList: INews[]
