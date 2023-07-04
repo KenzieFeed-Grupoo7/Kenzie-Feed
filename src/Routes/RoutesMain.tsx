@@ -4,6 +4,7 @@ import { LoginPage } from "../Pages/Login/index.tsx";
 import { RegisterPage } from "../Pages/RegisterPage";
 import { HomeNews } from "../Pages/HomeNews/index.tsx";
 import { DashboardPage } from "../Pages/Dashboard/index.tsx";
+import { InternalPage } from "../Pages/InternalPage/index.tsx";
 
 export const RoutesMain = () => {
   return (
@@ -13,6 +14,7 @@ export const RoutesMain = () => {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/homenews" element={<HomeNews />} />
       <Route path="dashboard" element={<DashboardPage />} />
+      <Route path="/InternalPage" element={<InternalPage/>}/>
     </Routes>
   );
 };

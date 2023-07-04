@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, createContext, useEffect, useState } from "react";
 import { api } from "../Services/Api";
 
 export const NewsContext = createContext({} as INewsContext);
@@ -20,11 +20,14 @@ interface INewsProviderProps{
 interface INewsContext{
     loading: boolean
     newsList: INews[]
+    selectNews: undefined|INews
+    setSelectNews: Dispatch<SetStateAction<undefined | INews>>
 }
 
 export const NewsProvider = ({children}: INewsProviderProps) => {
   const [newsList, setNewsList] = useState<INews[]>([]);
   const [loading, setLoading] = useState(false);
+  const [selectNews,setSelectNews] = useState<INews>();
 
   useEffect(() => {
     const loadNewsData = async () => {
@@ -44,7 +47,7 @@ export const NewsProvider = ({children}: INewsProviderProps) => {
   }, []);
 
   return (
-    <NewsContext.Provider value={{ loading, newsList }}>
+    <NewsContext.Provider value={{ loading, newsList ,selectNews,setSelectNews}}>
       {children}
     </NewsContext.Provider>
   );
