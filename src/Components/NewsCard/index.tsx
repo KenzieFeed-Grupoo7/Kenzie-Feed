@@ -1,4 +1,4 @@
-import { INews } from "../../Providers/NewsContexts"
+import { INews } from "../../Providers/NewsContexts/NewsContexts"
 
 interface INewsCardProps{
     news:INews;
