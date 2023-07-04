@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NewsContext } from "../../Providers/NewsContexts";
+import { NewsContext } from "../../Providers/NewsContexts/NewsContexts";
 import { NewsCard } from "../../Components/NewsCard";
 import homeImage from "../../Assets/Rectangle 11.png";
 import { Header } from "../../Components/Header";

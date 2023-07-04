@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App.tsx";
-import { NewsProvider } from "./Providers/NewsContexts.tsx";
+import { NewsProvider } from "./Providers/NewsContexts/NewsContexts.tsx";
 import { UserProvider } from "./Providers/UserContexts.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

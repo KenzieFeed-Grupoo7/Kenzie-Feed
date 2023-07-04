@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NewsContext } from "../../Providers/NewsContexts";
+import { NewsContext } from "../../Providers/NewsContexts/NewsContexts";
 import heart from "../../Assets/heart-01-svgrepo-com.svg";
 import { NewsCard } from "../../Components/NewsCard";
 import { Footer } from "../../Components/Footer";
