@@ -5,4 +5,15 @@ export const StyledDiv = styled.div`
         flex-direction:column;
         gap:1rem;
         text-align:center;
+        div{
+            display	:flex;
+            width:100%;
+            flex-direction:row;
+            justify-content:space-between;
+        }
+        ul{
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+        }
 `
