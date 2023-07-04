@@ -5,6 +5,7 @@ import homeImage from "../../Assets/Rectangle 11.png";
 import { Header } from "../../Components/Header";
 import { Footer } from "../../Components/Footer";
 import { StyledDiv } from "./style";
+import { StyledButton } from "../../Styles/buttons";
 
 export const HomePage = () => {
   const { newsList } = useContext(NewsContext);
@@ -18,6 +19,7 @@ export const HomePage = () => {
         <img src={homeImage} alt="" />
         <div>
           <h2>Últimas notícias</h2>
+          <StyledButton size="sm">Ver tudo</StyledButton>
         </div>
         <ul>
           {newsList.map((news) => (
