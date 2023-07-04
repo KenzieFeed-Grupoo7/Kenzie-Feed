@@ -8,5 +8,5 @@ export const loginFormSchema = z.object({
   password: z
     .string()
     .nonempty("A senha é obrigatória")
-    .min(8, "A senha deve conter no minimo 8 caracteres"),
+    .min(6, "A senha deve conter no minimo 8 caracteres"),
 });
