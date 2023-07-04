@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { INews, NewsContext } from "../../Providers/NewsContexts"
 import { useContext } from "react";
+import { StyledLi } from "./style";
 
 interface INewsCardProps{
     news:INews;
@@ -15,11 +16,11 @@ export const NewsCard = ({news}: INewsCardProps) =>{
     }
     
     return(
-        <li>
+        <StyledLi>
             <img src={news.image} alt="Imagem da noticia" />
             <h3>Por: {news.owner}</h3>
             <h3>{news.title}</h3>
             <button onClick={select}>Leia Mais</button>
-        </li>
+        </StyledLi>
     )
 }
