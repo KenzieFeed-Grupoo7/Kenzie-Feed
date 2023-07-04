@@ -1,8 +1,8 @@
-import { INews } from "../../Providers/NewsContexts/NewsContexts"
 import { useNavigate } from "react-router-dom";
-import { INews, NewsContext } from "../../Providers/NewsContexts"
+import { NewsContext } from "../../Providers/NewsContexts/NewsContexts"
 import { useContext } from "react";
 import { StyledLi } from "./style";
+import { INews } from "../../Providers/NewsContexts/@types";
 
 interface INewsCardProps{
     news:INews;
