@@ -1,4 +1,6 @@
 import imgLogin from "../../Assets/imgLogin.svg";
+import { Footer } from "../../Components/Footer/index.tsx";
+import { Header } from "../../Components/Header/index.tsx";
 import { StyledContainer } from "../../Styles/container.ts";
 import { LoginForm } from "./LoginForm/index.tsx";
 import { StyledMain } from "./index.ts";
@@ -6,9 +8,7 @@ import { StyledMain } from "./index.ts";
 export const LoginPage = () => {
   return (
     <>
-      <header>
-        <h1>isso è o HEADER</h1>
-      </header>
+      <Header/>
       <StyledMain>
         <StyledContainer className="login__container">
           <div className="login__figure">
@@ -22,6 +22,7 @@ export const LoginPage = () => {
           </div>
         </StyledContainer>
       </StyledMain>
+      <Footer/>
     </>
   );
 };

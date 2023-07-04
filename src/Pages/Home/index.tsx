@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { NewsContext } from "../../Providers/NewsContexts";
-import { NewsCard } from "../../components/NewsCard";
+import { NewsCard } from "../../Components/NewsCard";
 import homeImage from "../../Assets/Rectangle 11.png";
 
 export const HomePage = () => {

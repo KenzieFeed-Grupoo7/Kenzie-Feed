@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginFormSchema } from "../LoginFormSchema/index.ts";
-import { Input } from "../../../components/Input/index.tsx";
+import { Input } from "../../../Components/Input/index.tsx";
 import { StyledForm } from "./index.ts";
 import { StyledButton } from "../../../Styles/buttons.ts";
 
