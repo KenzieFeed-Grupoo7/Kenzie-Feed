@@ -3,11 +3,25 @@ import { useForm } from "react-hook-form";
 import { loginFormSchema } from "../LoginFormSchema/index.ts";
 import { Input } from "../../../Components/Input/index.tsx";
 import { StyledForm } from "./index.ts";
-import { StyledButton } from "../../../Styles/buttons.ts";
+import { StyledButton, StyledLink } from "../../../Styles/buttons.ts";
+import { api } from "../../../Services/Api.ts";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface ILoginFormData {
   email: string;
   password: string;
+}
+
+interface IUser {
+  email: string;
+  name: string;
+  id: number;
+}
+
+interface ILoginResponse {
+  accessToken: string;
+  user: IUser;
 }
 
 export const LoginForm = () => {
@@ -19,8 +33,23 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const submit = async (data: ILoginFormData) => {
-    console.log(data);
+  const [user, setUser] = useState<IUser | null>(null);
+  const navigate = useNavigate();
+
+  const login = async (formData: ILoginFormData) => {
+    try {
+      const { data } = await api.post<ILoginResponse>("/login", formData);
+      setUser(data.user);
+      localStorage.setItem("@TOKEN:", data.accessToken);
+      localStorage.setItem("@USER:", JSON.stringify(user));
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(`console do erro ${error}`);
+    }
+  };
+
+  const submit = async (formData: ILoginFormData) => {
+    login(formData);
   };
 
   return (
@@ -43,7 +72,7 @@ export const LoginForm = () => {
         Entrar
       </StyledButton>
       <p>Não é cadastrado</p>
-      <a>Cadastre-se</a>
+      <StyledLink to="/register">Cadastre-se</StyledLink>
     </StyledForm>
   );
 };
