@@ -1,5 +1,5 @@
 import { SubmitHandler } from "react-hook-form"
-import { registerFormSchema, TRegisterForm } from "../LoginFirnSchema"
+import { registerFormSchema, TRegisterForm } from "../RegisterFormSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useContext } from "react"
 import { Input } from "../../../Components/Input"
