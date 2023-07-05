@@ -10,22 +10,22 @@ export interface INews {
   owner: string;
   userId: number;
   id: number;
-  image: string;
-  likes: any[];
-}
-
-export interface INew {
-    title: string;
-    description: string;
-    owner: string;
+  image?: string;
+  likes?: {
     userId: number;
-    id: number;
-    likes: any[];
+    postId: number;
+  };
 }
 
 export interface INewsContext {
-  loading: boolean
-  newsList: INews[]
-  selectNews: undefined|INews
-  setSelectNews: Dispatch<SetStateAction<undefined | INews>>
+  loading: boolean;
+  newsList: INews[];
+  selectNews: undefined | INews;
+  setSelectNews: Dispatch<SetStateAction<undefined | INews>>;
+  addPost: (formData: INews) => Promise<void>;
+  getNewById: (id: number) => Promise<void>;
+  updatePost: (formData: INews, newId: number) => Promise<void>;
+  deletePost: (newId: number) => Promise<void>;
+  like: (formData: INews) => Promise<void>;
+  deslike: (newId: number) => Promise<void>;
 }
