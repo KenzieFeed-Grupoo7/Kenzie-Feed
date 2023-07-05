@@ -8,6 +8,8 @@ import {
   IUserContext,
   IUserProviderProps,
 } from "./@types";
+import { TRegisterForm } from "../../Pages/RegisterPage/RegisterFormSchema";
+import { toast } from "react-toastify";
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -34,17 +36,28 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
   };
 
+  const userRegister = async (formData: TRegisterForm) => {
+    try {
+      const { data } = await api.post("/users", formData);
+      toast.success("cadastro efetuado com sucesso");
+      navigate("/login");
+    } catch (error) {
+      toast.error("algo deu errado");
+    }
+  };
+
   const loginSubmit = (formData: ILoginFormData) => login(formData);
 
-  const logout = () => {
+  const userLogout = () => {
     setUser(null);
-    navigate("/");
     localStorage.remove("@TOKEN");
     localStorage.remove("@USER");
   };
 
   return (
-    <UserContext.Provider value={{ loading, login, loginSubmit, logout, user }}>
+    <UserContext.Provider
+      value={{ loading, login, loginSubmit, userLogout, user, userRegister }}
+    >
       {children}
     </UserContext.Provider>
   );
