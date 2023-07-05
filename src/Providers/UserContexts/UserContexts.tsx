@@ -1,33 +1,13 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../Services/Api";
-
-interface IUserProviderProps {
-  children: React.ReactNode;
-}
-
-export interface ILoginFormData {
-  email: string;
-  password: string;
-}
-
-export interface IUser {
-  email: string;
-  name: string;
-  id: number;
-}
-
-export interface ILoginResponse {
-  accessToken: string;
-  user: IUser;
-}
-
-export interface IUserContext {
-  loginSubmit: (formData: ILoginFormData) => Promise<void>;
-  login: (formData: ILoginFormData) => Promise<void>;
-  logout: () => void;
-  user: IUser | null;
-}
+import { api } from "../../Services/Api";
+import {
+  ILoginFormData,
+  ILoginResponse,
+  IUser,
+  IUserContext,
+  IUserProviderProps,
+} from "./@types";
 
 export const UserContext = createContext({} as IUserContext);
 

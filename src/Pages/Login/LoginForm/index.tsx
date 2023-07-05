@@ -7,7 +7,7 @@ import { StyledButton, StyledLink } from "../../../Styles/buttons.ts";
 import {
   ILoginFormData,
   UserContext,
-} from "../../../Providers/UserContexts.tsx";
+} from "../../../Providers/UserContexts/UserContexts.tsx";
 import { useContext } from "react";
 
 export const LoginForm = () => {

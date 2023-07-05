@@ -2,13 +2,18 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   padding: 1rem;
 
   width: 100%;
   height: 7rem;
+
+  .nav__container {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const StyledUser = styled.div`
