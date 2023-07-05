@@ -41,24 +41,31 @@ export const StyledButton = styled.button<IStyledButtonProps>`
   }}
 `;
 
-export const StyledButtonOutline = styled.button`
+export const StyledLink = styled(Link)`
   font-family: var(--font-secondary);
   font-size: 0.875rem;
   font-weight: 700;
+  text-decoration: none;
   color: var(--color-white);
 
   border-radius: 0.25rem;
   border: 1px solid var(--color-blue);
   background-color: var(--color-blue);
 
-  height: 2.6875rem;
-  padding: 0 1.125rem;
+
+  padding: 0.70rem 1.75rem;
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLinkOutline = styled(Link)`
   font-family: var(--font-secondary);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
   color: var(--color-blue);
-  line-height: 1.6;
-  font-weight: 400;
-  font-size: 0.9375rem;
+
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-blue);
+  background-color: var(--color-white);
+
+  padding: 0.70rem 1.75rem;
 `;

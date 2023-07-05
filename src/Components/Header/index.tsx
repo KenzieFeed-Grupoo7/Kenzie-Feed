@@ -1,24 +1,35 @@
+import { Link } from "react-router-dom";
 import logo from "../../Assets/logo.svg";
 import logout from "../../Assets/logout.svg";
-import { StyledButton } from "../../Styles/buttons";
+import { StyledLink, StyledLinkOutline } from "../../Styles/buttons";
 import { StyledContainer } from "../../Styles/container";
-
 import { StyledHeader, StyledUser } from "./style";
+import { UserContext } from "../../Providers/UserContexts/UserContexts";
+import { useContext } from "react";
 
 export const Header = () => {
-  const token = localStorage.getItem("@TOKEN");
+  const { user, userLogout } = useContext(UserContext);
 
-  // pegar inicial usuario
   return (
-    <StyledHeader>
-      <StyledContainer className="nav__container">
-        <img src={logo} alt="Logo Kenzie Hub" />
+    <StyledContainer>
+      <StyledHeader>
+        <img src={logo} alt="Logo Kenzie Hub"/>
         <div>
-          {token ? <StyledUser></StyledUser> : null}
-          {!token ? <StyledButton size="sm">Acessar</StyledButton> : null}
-          {token ? <img src={logout} /> : null}
+          {user ? <StyledUser>{user.name.charAt(0).toUpperCase()}</StyledUser> : null}
+
+          {!user ? <StyledLink to="/login">Acessar</StyledLink> : null}
+
+          {user ? (
+            <StyledLinkOutline to="/dashboard">Dashboard</StyledLinkOutline>
+          ) : null}
+
+          {user ? (
+            <Link onClick={userLogout} to={"/"}>
+              <img src={logout} alt="imagem logout" />
+            </Link>
+          ) : null}
         </div>
-      </StyledContainer>
-    </StyledHeader>
+      </StyledHeader>
+    </StyledContainer>
   );
 };
