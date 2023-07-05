@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useContext } from "react"
+import { UserContext } from "../../Providers/UserContexts"
 import { Outlet, Navigate } from "react-router-dom"
 
 export const ProtectedRoutes = () => {
-    //vericar se o usuario esta logado no UserContext
-    const [user, setUser] = useState(null) //coloquei so pra ele nao ficar reclamando
+    const { user } = useContext(UserContext)
 
     return user ? <Outlet/> : <Navigate to="/"/>
 }

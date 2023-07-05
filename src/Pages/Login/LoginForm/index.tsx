@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 import { loginFormSchema } from "../LoginFormSchema/index.ts";
 import { Input } from "../../../Components/Input/index.tsx";
 import { StyledForm } from "./index.ts";
-import { StyledButton } from "../../../Styles/buttons.ts";
-
-interface ILoginFormData {
-  email: string;
-  password: string;
-}
+import { StyledButton, StyledLink } from "../../../Styles/buttons.ts";
+import {
+  ILoginFormData,
+  UserContext,
+} from "../../../Providers/UserContexts.tsx";
+import { useContext } from "react";
 
 export const LoginForm = () => {
   const {
@@ -19,12 +19,10 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const submit = async (data: ILoginFormData) => {
-    console.log(data);
-  };
+  const { loginSubmit } = useContext(UserContext);
 
   return (
-    <StyledForm onSubmit={handleSubmit(submit)}>
+    <StyledForm onSubmit={handleSubmit(loginSubmit)}>
       <h1>Acesse o KenzieFeed</h1>
       <p>Preencha os campos corretamente para fazer login</p>
       <Input
@@ -43,7 +41,7 @@ export const LoginForm = () => {
         Entrar
       </StyledButton>
       <p>Não é cadastrado</p>
-      <a>Cadastre-se</a>
+      <StyledLink to="/register">Cadastre-se</StyledLink>
     </StyledForm>
   );
 };
