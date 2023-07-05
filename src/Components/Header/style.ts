@@ -9,6 +9,12 @@ export const StyledHeader = styled.header`
 
   width: 100%;
   height: 7rem;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 `;
 
 export const StyledUser = styled.div`
@@ -19,6 +25,8 @@ export const StyledUser = styled.div`
   height: 43px;
 
   font-family: var(--font-secondary);
+  color: var(--color-white);
+  justify-content: center;
   font-size: 0.875rem;
   font-weight: 700;
 `;

@@ -24,7 +24,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     loadNewsData();
   }, []);
 
-  const getNewById = async (id: number) => {
+  const getPostById = async (id: number) => {
     try {
       setLoading(true);
       const { data } = await api.get<INew>(`/posts/${id}?_embed=likes`);
@@ -36,7 +36,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const addPost = async (formData: any) => {
+  const createPost = async (formData: any) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -107,7 +107,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const deslike = async (newId: any) => {
+  const unlike = async (newId: any) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");

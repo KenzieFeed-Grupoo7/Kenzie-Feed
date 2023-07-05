@@ -25,7 +25,7 @@ export interface ILoginResponse {
 export interface IUserContext {
   loginSubmit: (formData: ILoginFormData) => Promise<void>;
   login: (formData: ILoginFormData) => Promise<void>;
-  logout: () => void;
+  userLogout: () => void;
   user: IUser | null;
 }
 
@@ -51,15 +51,14 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const loginSubmit = (formData: ILoginFormData) => login(formData);
 
-  const logout = () => {
+  const userLogout = () => {
     setUser(null);
-    navigate("/");
     localStorage.remove("@TOKEN");
     localStorage.remove("@USER");
   };
 
   return (
-    <UserContext.Provider value={{ login, loginSubmit, logout, user }}>
+    <UserContext.Provider value={{ login, loginSubmit, userLogout, user }}>
       {children}
     </UserContext.Provider>
   );
