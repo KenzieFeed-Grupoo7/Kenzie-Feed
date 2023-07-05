@@ -45,9 +45,8 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const loginSubmit = (formData: ILoginFormData) => login(formData);
 
-  const logout = () => {
+  const userLogout = () => {
     setUser(null);
-    navigate("/");
     localStorage.remove("@TOKEN");
     localStorage.remove("@USER");
   };
@@ -56,7 +55,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
 
   return (
-    <UserContext.Provider value={{ login, loginSubmit, logout, user, userRegister }}>
+    <UserContext.Provider value={{ login, loginSubmit, userLogout, user, userRegister }}>
       {children}
     </UserContext.Provider>
   );

@@ -15,7 +15,7 @@ export const Header = () => {
       <StyledHeader>
         <img src={logo} alt="Logo Kenzie Hub"/>
         <div>
-          {user ? <StyledUser>{user.name.charAt(0)}</StyledUser> : null}
+          {user ? <StyledUser>{user.name.charAt(0).toUpperCase()}</StyledUser> : null}
 
           {!user ? <StyledLink to="/login">Acessar</StyledLink> : null}
 
