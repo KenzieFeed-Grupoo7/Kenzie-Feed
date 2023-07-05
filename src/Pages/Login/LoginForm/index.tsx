@@ -17,7 +17,7 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const { loginSubmit } = useContext(UserContext);
+  const { loginSubmit, loading } = useContext(UserContext);
 
   return (
     <StyledForm onSubmit={handleSubmit(loginSubmit)}>
@@ -40,6 +40,7 @@ export const LoginForm = () => {
       </StyledButton>
       <p>Não é cadastrado</p>
       <StyledLink to="/register">Cadastre-se</StyledLink>
+      {loading ? <p>Carregando...</p> : null}
     </StyledForm>
   );
 };

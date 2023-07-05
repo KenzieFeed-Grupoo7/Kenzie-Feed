@@ -13,6 +13,8 @@ export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
+  const [loading, setLoading] = useState<true | false>(false);
+  // const [isOpen, setIsOpen] = useState
   const navigate = useNavigate();
 
   const login = async (formData: ILoginFormData) => {
@@ -23,9 +25,12 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@USER:", JSON.stringify(data.user));
 
       setUser(data.user);
+      setLoading(true);
       navigate("/dashboard");
     } catch (error) {
-      console.log(`console do erro ${error}`);
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -39,7 +44,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   };
 
   return (
-    <UserContext.Provider value={{ login, loginSubmit, logout, user }}>
+    <UserContext.Provider value={{ loading, login, loginSubmit, logout, user }}>
       {children}
     </UserContext.Provider>
   );

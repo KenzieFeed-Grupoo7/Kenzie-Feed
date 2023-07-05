@@ -19,6 +19,7 @@ export interface ILoginResponse {
 }
 
 export interface IUserContext {
+  loading: boolean;
   loginSubmit: (formData: ILoginFormData) => Promise<void>;
   login: (formData: ILoginFormData) => Promise<void>;
   logout: () => void;

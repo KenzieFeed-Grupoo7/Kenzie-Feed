@@ -1,13 +1,28 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
 import { INewsContext, INewsProviderProps, INews } from "./@types";
+import { UserContext } from "../UserContexts/UserContexts";
 
 export const NewsContext = createContext({} as INewsContext);
 
 export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [newsList, setNewsList] = useState<INews[]>([]);
+  const [userNewsList, setUserNewsList] = useState<INews[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectNews, setSelectNews] = useState<INews>();
+
+  console.log(newsList);
+
+  const { user } = useContext(UserContext);
+
+  const getUserPosts = () => {
+    const userPosts = newsList.filter((news) => news.id === user?.id);
+    setUserNewsList(userPosts);
+  };
+
+  useEffect(() => {
+    getUserPosts();
+  }, []);
 
   useEffect(() => {
     const loadNewsData = async () => {
@@ -137,6 +152,8 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
         deletePost,
         like,
         deslike,
+        userNewsList,
+        setUserNewsList,
       }}
     >
       {children}
