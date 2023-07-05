@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews, INew } from "./@types";
+import { INewsContext, INewsProviderProps, INews } from "./@types";
 
 export const NewsContext = createContext({} as INewsContext);
 
@@ -27,7 +27,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      const { data } = await api.get<INew>(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -36,16 +36,16 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const addPost = async (formData: any) => {
+  const addPost = async (formData: INews) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post("/users/techs", formData, {
+      const { data } = await api.post("/posts", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data)
+      console.log(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -53,17 +53,16 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const updatePost = async (formData: any, newId: any) => {
+  const updatePost = async (formData: INews, newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post("/users/techs", formData, {
+      const { data } = await api.post(`/posts/${newId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data)
-
+      console.log(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -71,7 +70,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const deletePost = async (newId: any) => {
+  const deletePost = async (newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -81,7 +80,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
         },
       });
 
-      console.log(data)
+      console.log(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -89,7 +88,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const like = async (formData: any) => {
+  const like = async (formData: INews) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -99,7 +98,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
         },
       });
 
-      console.log(data)
+      console.log(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -107,7 +106,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const deslike = async (newId: any) => {
+  const deslike = async (newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -117,7 +116,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
         },
       });
 
-      console.log(data)
+      console.log(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -126,7 +125,20 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   };
 
   return (
-    <NewsContext.Provider value={{ loading, newsList, selectNews, setSelectNews }}>
+    <NewsContext.Provider
+      value={{
+        loading,
+        newsList,
+        selectNews,
+        setSelectNews,
+        getNewById,
+        addPost,
+        updatePost,
+        deletePost,
+        like,
+        deslike,
+      }}
+    >
       {children}
     </NewsContext.Provider>
   );
