@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { UserContext } from "../../Providers/UserContexts/UserContexts";
 import { Outlet, Navigate } from "react-router-dom";
 
 export const ProtectedRoutes = () => {
-  const { user } = useContext(UserContext);
+  const token = localStorage.getItem("@TOKEN:");
 
-  return user ? <Outlet /> : <Navigate to="/" />;
+  return token ? <Outlet /> : <Navigate to="/" />;
 };
