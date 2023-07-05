@@ -1,33 +1,15 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { api } from "../Services/Api";
-
-interface IUserProviderProps {
-  children: React.ReactNode;
-}
-
-export interface ILoginFormData {
-  email: string;
-  password: string;
-}
-
-export interface IUser {
-  email: string;
-  name: string;
-  id: number;
-}
-
-export interface ILoginResponse {
-  accessToken: string;
-  user: IUser;
-}
-
-export interface IUserContext {
-  loginSubmit: (formData: ILoginFormData) => Promise<void>;
-  login: (formData: ILoginFormData) => Promise<void>;
-  userLogout: () => void;
-  user: IUser | null;
-}
+import { api } from "../../Services/Api";
+import {
+  ILoginFormData,
+  ILoginResponse,
+  IUser,
+  IUserContext,
+  IUserProviderProps,
+} from "./@types";
+import { TRegisterForm } from "../../Pages/RegisterPage/RegisterFormSchema";
+import { toast } from 'react-toastify'
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -49,16 +31,32 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     }
   };
 
+  const userRegister = async (formData: TRegisterForm) => {
+    try {
+      const { data } = await api.post("/users", formData)      
+      toast.success('cadastro efetuado com sucesso')
+      navigate("/login")
+      
+    } catch (error) {
+      toast.error("algo deu errado")
+      
+    }
+  };
+
   const loginSubmit = (formData: ILoginFormData) => login(formData);
 
-  const userLogout = () => {
+  const logout = () => {
     setUser(null);
+    navigate("/");
     localStorage.remove("@TOKEN");
     localStorage.remove("@USER");
   };
 
+ 
+
+
   return (
-    <UserContext.Provider value={{ login, loginSubmit, userLogout, user }}>
+    <UserContext.Provider value={{ login, loginSubmit, logout, user, userRegister }}>
       {children}
     </UserContext.Provider>
   );

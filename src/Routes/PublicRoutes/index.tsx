@@ -1,10 +1,9 @@
-import { useContext } from "react"
-import { UserContext } from "../../Providers/UserContexts"
-import { Outlet, Navigate } from "react-router-dom"
+import { useContext } from "react";
+import { UserContext } from "../../Providers/UserContexts/UserContexts";
+import { Outlet, Navigate } from "react-router-dom";
 
 export const PublicRoutes = () => {
-    const { user } = useContext(UserContext)
+  const { user } = useContext(UserContext);
 
-    return !user ? <Outlet/> : <Navigate to="/dashboard"/>
-}
-
+  return !user ? <Outlet /> : <Navigate to="/dashboard" />;
+};

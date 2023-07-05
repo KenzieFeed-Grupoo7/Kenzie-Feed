@@ -4,7 +4,7 @@ import logout from "../../Assets/logout.svg";
 import { StyledLink, StyledLinkOutline } from "../../Styles/buttons";
 import { StyledContainer } from "../../Styles/container";
 import { StyledHeader, StyledUser } from "./style";
-import { UserContext } from "../../Providers/UserContexts";
+import { UserContext } from "../../Providers/UserContexts/UserContexts";
 import { useContext } from "react";
 
 export const Header = () => {
