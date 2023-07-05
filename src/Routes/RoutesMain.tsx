@@ -18,7 +18,7 @@ export const RoutesMain = () => {
         <Route path="/homenews" element={<HomeNews />} />
       </Route>
       <Route element={<ProtectedRoutes/>}>
-        <Route path="dashboard" element={<DashboardPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/InternalPage" element={<InternalPage />} />
       </Route>
     </Routes>
