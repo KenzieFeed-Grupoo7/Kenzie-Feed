@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useContext } from "react"
 import { Input } from "../../../Components/Input"
 
+
 export const RegisterForm = () => {
     
     
@@ -27,7 +28,7 @@ export const RegisterForm = () => {
                 type="password"
                 placeholder="Confirmar senha"
             />
-            <button>Cadastrar-se</button>
+            <button type="submit">Cadastrar-se</button>
         </form>
         
     )
