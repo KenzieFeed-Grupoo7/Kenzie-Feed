@@ -28,4 +28,6 @@ export interface INewsContext {
   deletePost: (newId: number) => Promise<void>;
   like: (formData: INews) => Promise<void>;
   deslike: (newId: number) => Promise<void>;
+  userNewsList: INews[];
+  setUserNewsList: React.Dispatch<React.SetStateAction<INews[]>>;
 }

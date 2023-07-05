@@ -1,13 +1,21 @@
 import { Footer } from "../../Components/Footer";
 import { Header } from "../../Components/Header";
+import { UserNewsList } from "./UserNews/UserNewsList/index.tsx";
 
 export const DashboardPage = () => {
   return (
     <>
-      <Header/>
-      <h1>Dashboard</h1>
-      <button>Voltar</button>
-      <Footer/>
+      <Header />
+      <main>
+        <section>
+          <div>
+            <h1>Suas Publicações</h1>
+            <button>Novo Post</button>
+          </div>
+          <UserNewsList />
+        </section>
+      </main>
+      <Footer />
     </>
   );
 };

@@ -4,11 +4,9 @@ import { loginFormSchema } from "../LoginFormSchema/index.ts";
 import { Input } from "../../../Components/Input/index.tsx";
 import { StyledForm } from "./index.ts";
 import { StyledButton, StyledLink } from "../../../Styles/buttons.ts";
-import {
-  ILoginFormData,
-  UserContext,
-} from "../../../Providers/UserContexts/UserContexts.tsx";
+import { UserContext } from "../../../Providers/UserContexts/UserContexts.tsx";
 import { useContext } from "react";
+import { ILoginFormData } from "../../../Providers/UserContexts/@types.ts";
 
 export const LoginForm = () => {
   const {
@@ -19,7 +17,7 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const { loginSubmit } = useContext(UserContext);
+  const { loginSubmit, loading } = useContext(UserContext);
 
   return (
     <StyledForm onSubmit={handleSubmit(loginSubmit)}>
@@ -42,6 +40,7 @@ export const LoginForm = () => {
       </StyledButton>
       <p>Não é cadastrado</p>
       <StyledLink to="/register">Cadastre-se</StyledLink>
+      {loading ? <p>Carregando...</p> : null}
     </StyledForm>
   );
 };

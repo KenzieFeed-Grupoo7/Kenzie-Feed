@@ -9,12 +9,14 @@ import {
   IUserProviderProps,
 } from "./@types";
 import { TRegisterForm } from "../../Pages/RegisterPage/RegisterFormSchema";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
+  const [loading, setLoading] = useState<true | false>(false);
+  // const [isOpen, setIsOpen] = useState
   const navigate = useNavigate();
 
   const login = async (formData: ILoginFormData) => {
@@ -25,21 +27,22 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       localStorage.setItem("@USER:", JSON.stringify(data.user));
 
       setUser(data.user);
+      setLoading(true);
       navigate("/dashboard");
     } catch (error) {
-      console.log(`console do erro ${error}`);
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const userRegister = async (formData: TRegisterForm) => {
     try {
-      const { data } = await api.post("/users", formData)      
-      toast.success('cadastro efetuado com sucesso')
-      navigate("/login")
-      
+      const { data } = await api.post("/users", formData);
+      toast.success("cadastro efetuado com sucesso");
+      navigate("/login");
     } catch (error) {
-      toast.error("algo deu errado")
-      
+      toast.error("algo deu errado");
     }
   };
 
@@ -51,11 +54,10 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     localStorage.remove("@USER");
   };
 
- 
-
-
   return (
-    <UserContext.Provider value={{ login, loginSubmit, userLogout, user, userRegister }}>
+    <UserContext.Provider
+      value={{ loading, login, loginSubmit, userLogout, user, userRegister }}
+    >
       {children}
     </UserContext.Provider>
   );
