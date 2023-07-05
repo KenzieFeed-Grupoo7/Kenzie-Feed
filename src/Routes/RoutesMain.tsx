@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { HomePage } from "../Pages/Home";
 import { LoginPage } from "../Pages/Login/index.tsx";
-import { RegisterPage } from "../Pages/RegisterPage";
+import { RegisterPage } from "../Pages/RegisterPage/index.tsx";
 import { HomeNews } from "../Pages/HomeNews/index.tsx";
 import { DashboardPage } from "../Pages/Dashboard/index.tsx";
 import { InternalPage } from "../Pages/InternalPage/index.tsx";

@@ -16,6 +16,7 @@ export const NewsCard = ({news}: INewsCardProps) =>{
         navigate("/InternalPage")
     }
     
+    
     return(
         <StyledLi>
             <img src={news.image} alt="Imagem da noticia" />
