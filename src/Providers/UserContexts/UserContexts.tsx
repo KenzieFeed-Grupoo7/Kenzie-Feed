@@ -21,13 +21,10 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const login = async (formData: ILoginFormData) => {
     try {
-      const { data } = await api.post<ILoginResponse>("/login", formData);
-
-      localStorage.setItem("@TOKEN:", data.accessToken);
-      localStorage.setItem("@USER:", JSON.stringify(data.user));
-
-      setUser(data.user);
       setLoading(true);
+      const { data } = await api.post<ILoginResponse>("/login", formData);
+      localStorage.setItem("@TOKEN:", data.accessToken);
+      setUser(data.user);
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
@@ -38,7 +35,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const userRegister = async (formData: TRegisterForm) => {
     try {
-      const { data } = await api.post("/users", formData);
+      await api.post("/users", formData);
       toast.success("cadastro efetuado com sucesso");
       navigate("/login");
     } catch (error) {
