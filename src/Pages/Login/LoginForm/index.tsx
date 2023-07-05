@@ -4,11 +4,9 @@ import { loginFormSchema } from "../LoginFormSchema/index.ts";
 import { Input } from "../../../Components/Input/index.tsx";
 import { StyledForm } from "./index.ts";
 import { StyledButton, StyledLink } from "../../../Styles/buttons.ts";
-import {
-  ILoginFormData,
-  UserContext,
-} from "../../../Providers/UserContexts/UserContexts.tsx";
+import { UserContext } from "../../../Providers/UserContexts/UserContexts.tsx";
 import { useContext } from "react";
+import { ILoginFormData } from "../../../Providers/UserContexts/@types.ts";
 
 export const LoginForm = () => {
   const {

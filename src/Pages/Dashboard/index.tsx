@@ -1,8 +1,17 @@
+import { Header } from "../../Components/Header";
+
 export const DashboardPage = () => {
   return (
     <>
-      <h1>Dashboard</h1>
-      <button>Voltar</button>
+      <Header />
+      <main>
+        <section>
+          <div>
+            <h1>Suas Publicações</h1>
+            <button>Novo Post</button>
+          </div>
+        </section>
+      </main>
     </>
   );
 };
