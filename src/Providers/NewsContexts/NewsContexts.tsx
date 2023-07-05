@@ -11,25 +11,23 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [loading, setLoading] = useState(false);
   const [selectNews, setSelectNews] = useState<INews>();
 
-  console.log(newsList);
-
   const { user } = useContext(UserContext);
-
-  const getUserPosts = () => {
-    const userPosts = newsList.filter((news) => news.id === user?.id);
-    setUserNewsList(userPosts);
-  };
+  console.log(user);
 
   useEffect(() => {
-    getUserPosts();
-  }, []);
-
-  useEffect(() => {
+    console.log("ajbsjas");
     const loadNewsData = async () => {
       try {
         setLoading(true);
         const { data } = await api.get<INews[]>("/posts?_embed=likes", {});
         setNewsList(data);
+
+        const userPosts = data.filter((news) => {
+          console.log(news.userId, user?.id, news.userId === user?.id);
+          return news.userId === user?.id;
+        });
+
+        setUserNewsList(userPosts);
       } catch (error) {
         console.log(error);
       } finally {
@@ -37,7 +35,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
       }
     };
     loadNewsData();
-  }, []);
+  }, [user]);
 
   const getNewById = async (id: number) => {
     try {
