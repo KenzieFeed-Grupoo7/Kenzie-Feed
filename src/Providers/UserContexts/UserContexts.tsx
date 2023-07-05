@@ -23,7 +23,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
     try {
       setLoading(true);
       const { data } = await api.post<ILoginResponse>("/login", formData);
-      localStorage.setItem("@TOKEN:", data.accessToken);
+      localStorage.setItem("@TOKEN", data.accessToken);
       setUser(data.user);
       navigate("/dashboard");
     } catch (error) {
@@ -46,10 +46,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const loginSubmit = (formData: ILoginFormData) => login(formData);
 
   const userLogout = () => {
-    setUser(null);
-    localStorage.remove("@TOKEN");
-    localStorage.remove("@USER");
-  };
+    localStorage.removeItem("@TOKEN")
+    setUser(null)
+}
 
   return (
     <UserContext.Provider
