@@ -14,6 +14,10 @@ export const StyledButton = styled.button<IStyledButtonProps>`
   border: none;
   background-color: var(--color-blue);
 
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
   ${({ size }) => {
     switch (size) {
       case "sm":
