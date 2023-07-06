@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { INews } from "../../../../Providers/NewsContexts/@types.ts";
+import { StyledTitleThree } from "../../../../Styles/typography.ts";
 import { StyledCard } from "./index.ts";
 import { NewsContext } from "../../../../Providers/NewsContexts/NewsContexts.tsx";
 
