@@ -9,7 +9,7 @@ export interface INews {
   description: string;
   owner: string;
   userId: number;
-  id: number;
+  id?: number;
   image?: string;
   likes?: {
     userId: number;
