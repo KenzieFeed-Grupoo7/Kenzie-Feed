@@ -5,6 +5,7 @@ import { StyledCard } from "./index.ts";
 import { NewsContext } from "../../../../Providers/NewsContexts/NewsContexts.tsx";
 import edit from "../../../../Assets/edit.svg";
 import deleteImg from "../../../../Assets/delete.svg";
+import { Link } from "react-router-dom";
 
 interface IUserNewsCardProps {
   news: INews;
@@ -21,9 +22,9 @@ export const UserNewsCard = ({ news }: IUserNewsCardProps) => {
       </div>
 
       <div className="button__container">
-        <button>
+        <Link to={`/edit/${news.id}`}>
           <img src={edit} alt="imagem editar" />
-        </button>
+        </Link>
         <button onClick={() => deletePost(Number(news.id))}>
           <img src={deleteImg} alt="imagem editar" />
         </button>

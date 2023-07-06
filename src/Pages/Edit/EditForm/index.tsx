@@ -7,6 +7,7 @@ import { Input } from "../../../Components/Input";
 import { TEditForm, editFormSchema } from "../EditFormSchema";
 import { StyledLabel } from "../../../Components/Input/style";
 import { IUpdateForm } from "../../../Providers/NewsContexts/@types";
+import { useParams } from "react-router-dom";
 
 export const EditForm = () => {
   const {
@@ -17,18 +18,22 @@ export const EditForm = () => {
     resolver: zodResolver(editFormSchema),
   });
 
+  const { id } = useParams();
+
   const { updatePost } = useContext(NewsContext);
 
   const submit: SubmitHandler<TEditForm> = (formData) => {
     const name = localStorage.getItem("@USERNAME");
     const userId = Number(localStorage.getItem("@USERID"));
-    
+
     const updatedFormData: IUpdateForm = {
       ...formData,
       userId: userId,
-      owner: name!
-    }
-    updatePost(updatedFormData, 2)
+      owner: name!,
+    };
+    console.log(updatedFormData);
+    console.log(id);
+    updatePost(updatedFormData, id);
   };
 
   return (

@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import { StyledMain } from ".";
 import { Footer } from "../../Components/Footer";
 import { Header } from "../../Components/Header";
@@ -6,6 +7,7 @@ import { StyledTitleTwo } from "../../Styles/typography";
 import { EditForm } from "./EditForm";
 
 export const EditPage = () => {
+
   return (
     <>
       <Header />
