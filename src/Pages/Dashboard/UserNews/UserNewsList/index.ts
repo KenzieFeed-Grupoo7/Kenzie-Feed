@@ -1,5 +1,7 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const StyledList = styled.ul`
-  background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 `;
