@@ -8,14 +8,15 @@ import { UserContext } from "../../Providers/UserContexts/UserContexts";
 import { useContext } from "react";
 
 export const Header = () => {
-  const { user, userLogout } = useContext(UserContext);
+  const user = localStorage.getItem("@USERNAME");
+  const { userLogout } = useContext(UserContext);
 
   return (
     <StyledContainer>
       <StyledHeader>
         <img src={logo} alt="Logo Kenzie Hub"/>
         <div>
-          {user ? <StyledUser>{user.name.charAt(0).toUpperCase()}</StyledUser> : null}
+          {user ? <StyledUser>{user.charAt(0).toUpperCase()}</StyledUser> : null}
 
           {!user ? <StyledLink to="/login">Acessar</StyledLink> : null}
 
