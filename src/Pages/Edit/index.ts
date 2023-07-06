@@ -8,7 +8,7 @@ export const StyledMain = styled.main`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 920px;
     margin: 0 auto;
     padding: 1rem;
   }
@@ -18,7 +18,7 @@ export const StyledMain = styled.main`
     flex-direction: column;
     width: 100%;
 
-    max-width: 1200px;
+    max-width: 920px;
     margin: 0 auto;
     padding: 1rem;
 
