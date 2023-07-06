@@ -28,7 +28,7 @@ export interface INewsContext {
   setSelectNews: Dispatch<SetStateAction<undefined | INews>>;
   addPost: (formData: INews) => Promise<void>;
   getNewById: (id: number) => Promise<void>;
-  updatePost: (formData: INews, newId: number) => Promise<void>;
+  updatePost: (formData: IUpdateForm, newId: number) => Promise<void>;
   deletePost: (newId: number) => Promise<void>;
   like: (formData: INews) => Promise<void>;
   deslike: (newId: number) => Promise<void>;
