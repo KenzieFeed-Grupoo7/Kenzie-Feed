@@ -16,7 +16,6 @@ export const UserContext = createContext({} as IUserContext);
 export const UserProvider = ({ children }: IUserProviderProps) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState<true | false>(false);
-  // const [isOpen, setIsOpen] = useState
   const navigate = useNavigate();
 
   const login = async (formData: ILoginFormData) => {
@@ -46,9 +45,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
   const loginSubmit = (formData: ILoginFormData) => login(formData);
 
   const userLogout = () => {
-    localStorage.removeItem("@TOKEN")
-    setUser(null)
-}
+    localStorage.removeItem("@TOKEN");
+    setUser(null);
+  };
 
   return (
     <UserContext.Provider

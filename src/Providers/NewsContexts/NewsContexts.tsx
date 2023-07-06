@@ -10,23 +10,18 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [userNewsList, setUserNewsList] = useState<INews[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectNews, setSelectNews] = useState<INews>();
+  const [isOpen, setIsOpen] = useState(false);
 
   const { user } = useContext(UserContext);
-  console.log(user);
 
   useEffect(() => {
-    console.log("ajbsjas");
     const loadNewsData = async () => {
       try {
         setLoading(true);
         const { data } = await api.get<INews[]>("/posts?_embed=likes", {});
         setNewsList(data);
 
-        const userPosts = data.filter((news) => {
-          console.log(news.userId, user?.id, news.userId === user?.id);
-          return news.userId === user?.id;
-        });
-
+        const userPosts = data.filter((news) => news.userId === user?.id);
         setUserNewsList(userPosts);
       } catch (error) {
         console.log(error);
@@ -40,8 +35,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
-      console.log(data);
+      await api.get<INews>(`/posts/${id}?_embed=likes`);
     } catch (error) {
       console.log(error);
     } finally {
@@ -137,6 +131,14 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
   return (
     <NewsContext.Provider
       value={{
@@ -152,6 +154,10 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
         deslike,
         userNewsList,
         setUserNewsList,
+        isOpen,
+        setIsOpen,
+        closeModal,
+        openModal,
       }}
     >
       {children}

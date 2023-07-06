@@ -19,6 +19,10 @@ export interface INews {
 
 export interface INewsContext {
   loading: boolean;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  closeModal: () => void;
+  openModal: () => void;
   newsList: INews[];
   selectNews: undefined | INews;
   setSelectNews: Dispatch<SetStateAction<undefined | INews>>;
