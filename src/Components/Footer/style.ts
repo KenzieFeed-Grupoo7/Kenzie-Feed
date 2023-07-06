@@ -5,5 +5,13 @@ export const StyledFooter = styled.footer`
     justify-content: center;
     align-items: center;
 
-    height: 60px;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    
+    div {
+        width: 1200px;
+        max-width: 100vw;
+        text-align: center;
+    }
 `

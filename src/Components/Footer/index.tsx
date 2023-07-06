@@ -6,9 +6,11 @@ export const Footer = () => {
   return (
     <StyledContainer>
       <StyledFooter>
-        <StyledParagraph fontStyle="lg">
-          Todos os direitos reservados - Kenzie Academy Brasil
-        </StyledParagraph>
+        <div>
+          <StyledParagraph fontStyle="lg">
+            Todos os direitos reservados - Kenzie Academy Brasil
+          </StyledParagraph>
+        </div>
       </StyledFooter>
     </StyledContainer>
   );
