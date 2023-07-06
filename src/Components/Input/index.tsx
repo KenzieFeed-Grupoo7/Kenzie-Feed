@@ -13,7 +13,7 @@ export const Input = forwardRef(
          <StyledFieldBox>
             {label ? <StyledLabel htmlFor={rest.name}>{label}</StyledLabel> : null}
             <StyledInput id={rest.name} name={rest.name} ref={ref} type="text" {...rest} />
-            {error ? <p>{error.message}</p> : null}
+            {error ? <p>{error.message}</p> : <p></p>}
          </StyledFieldBox>
       );
    }

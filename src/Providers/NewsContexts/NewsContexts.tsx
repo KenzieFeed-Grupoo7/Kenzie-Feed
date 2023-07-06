@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews } from "./@types";
+import { INewsContext, INewsProviderProps, INews, IUpdateForm } from "./@types";
 
 export const NewsContext = createContext({} as INewsContext);
 
@@ -12,7 +12,6 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const userId = Number(localStorage.getItem("@USERID"));
-  const userName = String(localStorage.getItem("@USERNAME"));
 
   useEffect(() => {
     const loadNewsData = async () => {
@@ -59,7 +58,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const updatePost = async (formData: INews, newId: number) => {
+  const updatePost = async (formData: IUpdateForm, newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");

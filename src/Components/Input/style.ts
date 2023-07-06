@@ -4,6 +4,12 @@ export const StyledFieldBox = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    p {
+        color: red;
+        font-size: clamp(0.50rem, 7vw, 0.75rem);
+        margin-bottom: 0.5rem;
+        height: 0.75rem;
+    }
 `
 
 export const StyledInput = styled.input`

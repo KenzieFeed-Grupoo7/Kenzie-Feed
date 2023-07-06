@@ -6,7 +6,7 @@ export const StyledFooter = styled.footer`
     align-items: center;
     background-color: white;
 
-    height: 100px;
+    height: 80px;
     position: fixed;
     bottom: 0;
     
