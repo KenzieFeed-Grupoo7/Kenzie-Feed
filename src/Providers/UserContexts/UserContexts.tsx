@@ -34,11 +34,14 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const userRegister = async (formData: TRegisterForm) => {
     try {
+      setLoading(true);
       await api.post("/users", formData);
       toast.success("cadastro efetuado com sucesso");
       navigate("/login");
     } catch (error) {
       toast.error("algo deu errado");
+    } finally {
+      setLoading(false);
     }
   };
 
