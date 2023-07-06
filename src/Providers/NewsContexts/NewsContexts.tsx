@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews, IUpdateForm } from "./@types";
+import { INewsContext, INewsProviderProps, INews, IUpdateForm, ILike, IUpdateForm } from "./@types";
+import { toast } from "react-toastify";
 import { toast } from "react-toastify";
 
 export const NewsContext = createContext({} as INewsContext);
@@ -39,10 +40,19 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     setIsOpen(true);
   };
 
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      await api.get<INews>(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
+      setSelectNews(data)
     } catch (error) {
       console.log(error);
     } finally {
@@ -55,10 +65,14 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
       await api.post("/posts", formData, {
+      await api.post("/posts", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      toast.success("Post criado com sucesso!");
+      setUserNewsList([...userNewsList, formData]);
+      closeModal();
       toast.success("Post criado com sucesso!");
       setUserNewsList([...userNewsList, formData]);
       closeModal();
@@ -69,6 +83,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
+  const updatePost = async (formData: IUpdateForm, newId: number) => {
   const updatePost = async (formData: IUpdateForm, newId: number) => {
     try {
       setLoading(true);
@@ -106,11 +121,11 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const like = async (formData: INews) => {
+  const like = async (formData: ILike) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post("/likes", formData, {
+      const { data } = await api.post("/likes",formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -128,7 +143,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.delete(`/likes/${newId}}`, {
+      const { data } = await api.delete(`/likes/${newId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
