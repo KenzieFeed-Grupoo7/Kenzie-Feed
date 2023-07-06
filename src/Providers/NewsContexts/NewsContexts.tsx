@@ -42,7 +42,8 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      await api.get<INews>(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
+      setSelectNews(data)
     } catch (error) {
       console.log(error);
     } finally {
@@ -126,7 +127,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.delete(`/likes/${newId}}`, {
+      const { data } = await api.delete(`/likes/${newId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

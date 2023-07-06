@@ -13,11 +13,11 @@ interface INewsCardProps{
 // }
 
 export const NewsCard = ({news}: INewsCardProps) =>{
-    const { setSelectNews } = useContext(NewsContext)
+    
     const navigate = useNavigate()
 
     const select = () =>{
-        setSelectNews(news)
+        
         console.log("clicou")
         navigate(`/InternalPage/${news.id}`)
     }

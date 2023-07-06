@@ -9,21 +9,19 @@ import { EditPage } from "../Pages/Edit/index.tsx";
 import { ProtectedRoutes } from "./ProtectedRoutes/index.tsx";
 import { PublicRoutes } from "./PublicRoutes/index.tsx";
 
-
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route element={<PublicRoutes/>}>
-        <Route path="/" element={<HomePage />} />
+      <Route element={<PublicRoutes />}>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/homenews" element={<HomeNews />} />
-        <Route path="/InternalPage/:id" element={<InternalPage />} />
       </Route>
-      <Route element={<ProtectedRoutes/>}>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/homenews" element={<HomeNews />} />
+      <Route path="/InternalPage/:id" element={<InternalPage />} />
+      <Route element={<ProtectedRoutes />}>
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/InternalPage/:id" element={<InternalPage />} />
-        <Route path="/edit" element={<EditPage/>} />
+        <Route path="/edit" element={<EditPage />} />
       </Route>
     </Routes>
   );
