@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
 import { INewsContext, INewsProviderProps, INews } from "./@types";
+import { TEditForm } from "../../Pages/Edit/EditFormSchema";
 
 export const NewsContext = createContext({} as INewsContext);
 
@@ -58,7 +59,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const updatePost = async (formData: INews, newId: number) => {
+  const updatePost = async (formData: TEditForm, newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
