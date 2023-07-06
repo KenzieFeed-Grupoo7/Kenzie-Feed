@@ -4,7 +4,6 @@ import { api } from "../../Services/Api";
 import {
   ILoginFormData,
   ILoginResponse,
-  IUser,
   IUserContext,
   IUserProviderProps,
 } from "./@types";
@@ -55,7 +54,13 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   return (
     <UserContext.Provider
-      value={{ loading, login, loginSubmit, userLogout, userRegister }}
+      value={{
+        loading,
+        login,
+        loginSubmit,
+        userLogout,
+        userRegister,
+      }}
     >
       {children}
     </UserContext.Provider>

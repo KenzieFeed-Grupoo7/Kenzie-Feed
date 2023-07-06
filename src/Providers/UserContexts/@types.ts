@@ -25,10 +25,8 @@ export interface IUserContext {
   loginSubmit: (formData: ILoginFormData) => Promise<void>;
   login: (formData: ILoginFormData) => Promise<void>;
   userLogout: () => void;
-  user: IUser | null;
-  userRegister: (formData: TRegisterForm) => Promise<void>
+  userRegister: (formData: TRegisterForm) => Promise<void>;
 }
-
 
 // export interface IRegisterFormData {
 //   email: string,
