@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews, IUpdateForm, ILike, IUpdateForm } from "./@types";
-import { toast } from "react-toastify";
+import { INewsContext, INewsProviderProps, INews, ILike, IUpdateForm } from "./@types";
 import { toast } from "react-toastify";
 
 export const NewsContext = createContext({} as INewsContext);
@@ -40,14 +39,6 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     setIsOpen(true);
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
@@ -65,14 +56,10 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
       await api.post("/posts", formData, {
-      await api.post("/posts", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      toast.success("Post criado com sucesso!");
-      setUserNewsList([...userNewsList, formData]);
-      closeModal();
       toast.success("Post criado com sucesso!");
       setUserNewsList([...userNewsList, formData]);
       closeModal();
@@ -83,7 +70,6 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const updatePost = async (formData: IUpdateForm, newId: number) => {
   const updatePost = async (formData: IUpdateForm, newId: number) => {
     try {
       setLoading(true);
@@ -130,7 +116,6 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-
       console.log(data);
     } catch (error) {
       console.log(error);
