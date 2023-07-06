@@ -30,7 +30,7 @@ export const LoginForm = () => {
         error={errors.email}
       />
       <Input
-        type="number"
+        type="password"
         placeholder="Senha"
         {...register("password")}
         error={errors.password}
