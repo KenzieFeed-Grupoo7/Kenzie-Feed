@@ -6,6 +6,7 @@ import { StyledButton } from "../../../Styles/buttons";
 import { Input } from "../../../Components/Input";
 import { TEditForm, editFormSchema } from "../EditFormSchema";
 import { StyledLabel } from "../../../Components/Input/style";
+import { IUpdateForm } from "../../../Providers/NewsContexts/@types";
 
 export const EditForm = () => {
   const {
@@ -19,7 +20,15 @@ export const EditForm = () => {
   const { updatePost } = useContext(NewsContext);
 
   const submit: SubmitHandler<TEditForm> = (formData) => {
-    updatePost(formData, 2);
+    const name = localStorage.getItem("@USERNAME");
+    const userId = Number(localStorage.getItem("@USERID"));
+    
+    const updatedFormData: IUpdateForm = {
+      ...formData,
+      userId: userId,
+      owner: name!
+    }
+    updatePost(updatedFormData, 2)
   };
 
   return (
@@ -47,11 +56,12 @@ export const EditForm = () => {
           rows={12}
           {...register("description")}
         />
+        <p>{errors.description?.message}</p>
       </div>
 
       <div>
         <StyledButton size="sm" type="submit">
-          Salvar póst
+          Salvar post
         </StyledButton>
       </div>
     </form>

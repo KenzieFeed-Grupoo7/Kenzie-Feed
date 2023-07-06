@@ -1,3 +1,4 @@
+import { StyledMain } from ".";
 import { Footer } from "../../Components/Footer";
 import { Header } from "../../Components/Header";
 import { StyledLinkOutline } from "../../Styles/buttons";
@@ -8,13 +9,13 @@ export const EditPage = () => {
   return (
     <>
       <Header />
-      <main>
-        <div>
-          <StyledTitleTwo>Editando:</StyledTitleTwo>
-          <StyledLinkOutline to="/dashboard">Voltar</StyledLinkOutline>
-        </div>
-        <EditForm/>
-      </main>
+        <StyledMain>
+          <div>
+            <StyledTitleTwo>Editando:</StyledTitleTwo>
+            <StyledLinkOutline to="/dashboard">Voltar</StyledLinkOutline>
+          </div>
+          <EditForm />
+        </StyledMain>
       <Footer />
     </>
   );

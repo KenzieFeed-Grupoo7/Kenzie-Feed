@@ -35,3 +35,11 @@ export interface INewsContext {
   userNewsList: INews[];
   setUserNewsList: React.Dispatch<React.SetStateAction<INews[]>>;
 }
+
+export interface IUpdateForm {
+  title: string;
+  description: string;
+  owner: string;
+  userId: number;
+  image: string;
+}
