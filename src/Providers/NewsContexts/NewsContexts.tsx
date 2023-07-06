@@ -90,13 +90,15 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.delete(`/posts/${newId}}`, {
+      const { data } = await api.delete(`/posts/${newId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
       console.log(data);
+      const postList = userNewsList.filter((news) => news.id !== newId);
+      setUserNewsList(postList);
+      toast.info("Post deletado com sucesso!");
     } catch (error) {
       console.log(error);
     } finally {
