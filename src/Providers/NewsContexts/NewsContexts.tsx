@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
 import { INewsContext, INewsProviderProps, INews } from "./@types";
-import { UserContext } from "../UserContexts/UserContexts";
 
 export const NewsContext = createContext({} as INewsContext);
 
@@ -12,7 +11,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [selectNews, setSelectNews] = useState<INews>();
   const [isOpen, setIsOpen] = useState(false);
 
-  const { user } = useContext(UserContext);
+  const userId = Number(localStorage.getItem("@USERID"));
 
   useEffect(() => {
     const loadNewsData = async () => {
@@ -20,8 +19,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
         setLoading(true);
         const { data } = await api.get<INews[]>("/posts?_embed=likes", {});
         setNewsList(data);
-
-        const userPosts = data.filter((news) => news.userId === user?.id);
+        const userPosts = data.filter((news) => news.userId === userId);
         setUserNewsList(userPosts);
       } catch (error) {
         console.log(error);
@@ -30,7 +28,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
       }
     };
     loadNewsData();
-  }, [user]);
+  }, [userId]);
 
   const getNewById = async (id: number) => {
     try {

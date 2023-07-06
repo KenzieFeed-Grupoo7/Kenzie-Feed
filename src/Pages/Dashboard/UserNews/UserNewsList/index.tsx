@@ -2,12 +2,10 @@ import { StyledList } from "./index.ts";
 import { UserNewsCard } from "../UserNewsCard/index.tsx";
 import { useContext } from "react";
 import { NewsContext } from "../../../../Providers/NewsContexts/NewsContexts.tsx";
-import { UserContext } from "../../../../Providers/UserContexts/UserContexts.tsx";
 
 export const UserNewsList = () => {
   const { userNewsList } = useContext(NewsContext);
-  const { user } = useContext(UserContext);
-  console.log(user);
+  const user = localStorage.getItem("@USERID");
 
   return (
     <StyledList>

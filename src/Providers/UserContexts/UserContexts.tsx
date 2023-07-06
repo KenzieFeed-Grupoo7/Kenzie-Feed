@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 export const UserContext = createContext({} as IUserContext);
 
 export const UserProvider = ({ children }: IUserProviderProps) => {
-  const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState<true | false>(false);
   const navigate = useNavigate();
 
@@ -23,10 +22,11 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
       setLoading(true);
       const { data } = await api.post<ILoginResponse>("/login", formData);
       localStorage.setItem("@TOKEN", data.accessToken);
-      setUser(data.user);
+      localStorage.setItem("@USERID", JSON.stringify(data.user.id));
+      localStorage.setItem("@USERNAME", data.user.name);
       navigate("/dashboard");
     } catch (error) {
-      console.log(error);
+      toast.error("senha ou email incorreto");
     } finally {
       setLoading(false);
     }
@@ -49,12 +49,13 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
 
   const userLogout = () => {
     localStorage.removeItem("@TOKEN");
-    setUser(null);
+    localStorage.removeItem("@USERID");
+    localStorage.removeItem("@USERNAME");
   };
 
   return (
     <UserContext.Provider
-      value={{ loading, login, loginSubmit, userLogout, user, userRegister }}
+      value={{ loading, login, loginSubmit, userLogout, userRegister }}
     >
       {children}
     </UserContext.Provider>
