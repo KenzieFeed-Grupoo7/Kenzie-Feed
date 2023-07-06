@@ -19,7 +19,7 @@ export const NewsCard = ({news}: INewsCardProps) =>{
     const select = () =>{
         setSelectNews(news)
         console.log("clicou")
-        navigate("/InternalPage")
+        navigate(`/InternalPage/${news.id}`)
     }
     
     

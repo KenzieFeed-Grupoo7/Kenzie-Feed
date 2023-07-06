@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews, ILike } from "./@types";
+import { INewsContext, INewsProviderProps, INews, IUpdateForm, ILike } from "./@types";
+import { toast } from "react-toastify";
 
 export const NewsContext = createContext({} as INewsContext);
 
@@ -12,7 +13,6 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const userId = Number(localStorage.getItem("@USERID"));
-  const userName = String(localStorage.getItem("@USERNAME"));
 
   useEffect(() => {
     const loadNewsData = async () => {
@@ -31,6 +31,14 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     loadNewsData();
   }, [userId]);
 
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
@@ -46,12 +54,14 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post("/posts", formData, {
+      await api.post("/posts", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
+      toast.success("Post criado com sucesso!");
+      setUserNewsList([...userNewsList, formData]);
+      closeModal();
     } catch (error) {
       console.log(error);
     } finally {
@@ -59,7 +69,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const updatePost = async (formData: INews, newId: number) => {
+  const updatePost = async (formData: IUpdateForm, newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -128,14 +138,6 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const openModal = () => {
-    setIsOpen(true);
   };
 
   return (

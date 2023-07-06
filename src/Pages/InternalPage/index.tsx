@@ -6,10 +6,12 @@ import { Footer } from "../../Components/Footer";
 import { Header } from "../../Components/Header";
 import { StyledMain } from "./style";
 import { INews } from "../../Providers/NewsContexts/@types";
+import { useParams } from "react-router-dom";
 
 export const InternalPage = () => {
-  const { selectNews, newsList, like, deslike } = useContext(NewsContext);
-  if (selectNews) {
+  const {id} = useParams();
+  const { newsList, like, deslike, getNewById } = useContext(NewsContext);
+  const selectNews = getNewById(id)
     const [liked, setLiked] = useState(false);
     const likeArr = selectNews.likes
     const userId = Number(localStorage.getItem("@TOKEN"))
@@ -57,5 +59,5 @@ export const InternalPage = () => {
         <Footer />
       </>
     );
-  }
+  
 };
