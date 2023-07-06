@@ -16,7 +16,10 @@ export interface INews {
     postId: number;
   };
 }
-
+export interface ILike{
+  userId:number;
+  postId:number
+}
 export interface INewsContext {
   loading: boolean;
   isOpen: boolean;
@@ -30,7 +33,7 @@ export interface INewsContext {
   getNewById: (id: number) => Promise<void>;
   updatePost: (formData: INews, newId: number) => Promise<void>;
   deletePost: (newId: number) => Promise<void>;
-  like: (formData: INews) => Promise<void>;
+  like: (formData: ILike) => Promise<void>;
   deslike: (newId: number) => Promise<void>;
   userNewsList: INews[];
   setUserNewsList: React.Dispatch<React.SetStateAction<INews[]>>;

@@ -1,36 +1,61 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NewsContext } from "../../Providers/NewsContexts/NewsContexts";
 import heart from "../../Assets/heart-01-svgrepo-com.svg";
 import { NewsCard } from "../../Components/NewsCard";
 import { Footer } from "../../Components/Footer";
 import { Header } from "../../Components/Header";
+import { StyledMain } from "./style";
+import { INews } from "../../Providers/NewsContexts/@types";
 
 export const InternalPage = () => {
-  const { selectNews, newsList } = useContext(NewsContext);
-  console.log(selectNews);
+  const { selectNews, newsList, like, deslike } = useContext(NewsContext);
+  if (selectNews) {
+    const [liked, setLiked] = useState(false);
+    const likeArr = selectNews.likes
+    const userId = Number(localStorage.getItem("@TOKEN"))
+    const newsId = Number(selectNews.id)
+    const res ={
+      userId:userId,
+      postId:newsId
+    }
+    console.log(newsId)
 
-  return (
-    <>
-    <Header/>
-      <h4>Por:{selectNews?.owner}</h4>
-      <h1>{selectNews?.title}</h1>
-      <img src={selectNews?.image} alt="" />
-      <div>
-        <button>
-          <img src={heart} alt="" />
-        </button>
-        <h3>Seja o primeiro a curtir este post</h3>
-      </div>
-      <p>{selectNews?.description}</p>
-      <div>
-        <h2>Leia também</h2>
-        <ul>
-          {newsList.map((news) => (
-            <NewsCard key={news.id} news={news} />
-          ))}
-        </ul>
-      </div>
-      <Footer/>
-    </>
-  );
+    function registerLike() {
+      console.log(res)
+      setLiked(true);
+      if (liked) {
+          like(res);
+      } else {
+        if(selectNews?.id){
+          deslike(selectNews.id);
+        }
+      }
+    }
+    return (
+      <>
+        <Header />
+        <StyledMain>
+          <h4>Por:{selectNews?.owner}</h4>
+          <h1>{selectNews?.title}</h1>
+          <img className="mainImg" src={selectNews?.image} alt="" />
+          <div className="likeContainer">
+            <button onClick={()=>registerLike()}>
+              <img src={heart} alt="" />
+            </button>
+             {likeArr ? likeArr+" curtidas": <h3>Seja o primeiro a curtir este post</h3>} 
+          </div>
+          <p>{selectNews?.description}</p>
+          <div>
+            <h2>Leia também</h2>
+            <ul>
+              {newsList.map((news) => (
+                <NewsCard key={news.id} news={news} />
+              ))}
+            </ul>
+          </div>
+        </StyledMain>
+        <Footer />
+      </>
+    );
+  }
 };

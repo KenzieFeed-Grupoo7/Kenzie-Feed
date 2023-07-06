@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews } from "./@types";
+import { INewsContext, INewsProviderProps, INews, ILike } from "./@types";
 
 export const NewsContext = createContext({} as INewsContext);
 
@@ -94,11 +94,11 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const like = async (formData: INews) => {
+  const like = async (formData: ILike) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post("/likes", formData, {
+      const { data } = await api.post("/likes",formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
