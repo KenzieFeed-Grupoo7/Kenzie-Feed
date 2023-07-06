@@ -12,6 +12,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const userId = Number(localStorage.getItem("@USERID"));
+  const userName = String(localStorage.getItem("@USERNAME"));
 
   useEffect(() => {
     const loadNewsData = async () => {
