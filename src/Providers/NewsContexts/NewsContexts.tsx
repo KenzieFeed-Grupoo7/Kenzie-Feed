@@ -124,7 +124,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      getNewById(formData.postId)
+      getNewById(formData.postId);
     } catch (error) {
       console.log(error);
     } finally {
@@ -132,7 +132,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const deslike = async (newId: number,postId:number) => {
+  const deslike = async (newId: number, postId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -141,7 +141,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      getNewById(postId)
+      getNewById(postId);
     } catch (error) {
       console.log(error);
     } finally {
