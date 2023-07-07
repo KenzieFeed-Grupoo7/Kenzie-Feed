@@ -18,7 +18,7 @@ export const EditForm = () => {
     resolver: zodResolver(editFormSchema),
   });
 
-  const { NewsId } = useParams();
+  const { id } = useParams();
 
   const { updatePost } = useContext(NewsContext);
 
@@ -31,8 +31,8 @@ export const EditForm = () => {
       userId: userId,
       owner: userName!,
     };
-    console.log(NewsId);
-    updatePost(newData, Number(NewsId));
+    console.log(id);
+    updatePost(newData, Number(id));
   };
 
   return (
