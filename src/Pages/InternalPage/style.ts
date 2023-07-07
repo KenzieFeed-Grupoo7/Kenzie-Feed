@@ -5,6 +5,10 @@ export const StyledMain = styled.main`
     flex-direction:column;
     align-items:center;
     gap:1rem;
+
+    height: 75vh;
+    overflow: auto;
+    
     .mainImg{
         border-radius:25px;
     }
