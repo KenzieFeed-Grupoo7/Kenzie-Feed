@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { NewsContext } from "../../Providers/NewsContexts/NewsContexts";
 import heart from "../../Assets/heart-01-svgrepo-com.svg";
 import { NewsCard } from "../../Components/NewsCard";
@@ -17,13 +17,13 @@ export const InternalPage = () => {
 
   const userId = Number(localStorage.getItem("@USERID"));
   const newsId = Number(selectNews?.id);
-  
-  const likeFind = selectNews?.likes?.find((like) =>like.userId == Number(userId));
-  const likeCheck = likeFind?true:false
-  
+
+  const likeFind = selectNews?.likes?.find(
+    (like) => like.userId == Number(userId)
+  );
+  const likeCheck = likeFind ? true : false;
+
   const footerNews = newsList.filter((news) => news.id !== selectNews?.id);
-  
-  console.log(selectNews)
 
   const res = {
     userId: userId,
@@ -33,10 +33,8 @@ export const InternalPage = () => {
   function registerLike() {
     if (!likeCheck) {
       like(res);
-      console.log("curtiu");
     } else {
-      deslike(likeFind?.id!,res.postId);
-      console.log("descurtiu");
+      deslike(likeFind!.id!, res.postId);
     }
   }
   return (
@@ -56,15 +54,13 @@ export const InternalPage = () => {
           ) : (
             <h3>Faça login para poder curtir este post</h3>
           )}
-          {
-            userId?(
-              selectNews?.likes?.length == 0 ? (
-                <h3>Seja o primeiro a curtir este post</h3>
-              ) : (
-                <h3>{selectNews?.likes?.length} curtidas</h3>
-              )
-            ):null
-          }
+          {userId ? (
+            selectNews?.likes?.length == 0 ? (
+              <h3>Seja o primeiro a curtir este post</h3>
+            ) : (
+              <h3>{selectNews?.likes?.length} curtidas</h3>
+            )
+          ) : null}
         </div>
         <p>{selectNews?.description}</p>
         <div>

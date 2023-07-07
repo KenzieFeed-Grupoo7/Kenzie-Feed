@@ -8,8 +8,8 @@ export const UserNewsList = () => {
 
   return (
     <StyledList>
-      {userNewsList.map((news) =>
-        news.userId ? <UserNewsCard key={news.id} news={news} /> : null
+      {userNewsList.map((news, index) =>
+        news.userId ? <UserNewsCard key={index} news={news} /> : null
       )}
       {userNewsList.length > 0 ? null : <p>Você ainda não tem publicações.</p>}
     </StyledList>

@@ -13,7 +13,6 @@ interface IUserNewsCardProps {
 
 export const UserNewsCard = ({ news }: IUserNewsCardProps) => {
   const { deletePost } = useContext(NewsContext);
-
   return (
     <StyledCard>
       <div className="img__container">
