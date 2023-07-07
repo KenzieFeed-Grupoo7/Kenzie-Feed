@@ -80,7 +80,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post(`/posts/${newId}`, formData, {
+      const { data } = await api.put(`/posts/${newId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -124,7 +124,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      getNewById(formData.postId)
+      getNewById(formData.postId);
     } catch (error) {
       console.log(error);
     } finally {
@@ -132,7 +132,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const deslike = async (newId: number,postId:number) => {
+  const deslike = async (newId: number, postId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -141,7 +141,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      getNewById(postId)
+      getNewById(postId);
     } catch (error) {
       console.log(error);
     } finally {

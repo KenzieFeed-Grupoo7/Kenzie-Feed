@@ -24,12 +24,11 @@ export interface INewsSelect {
   id?: number;
   image?: string;
   likes?: ILike[];
-
 }
 export interface ILike {
   userId: number;
   postId: number;
-  id?:number;
+  id?: number;
 }
 export interface INewsContext {
   loading: boolean;
@@ -45,7 +44,7 @@ export interface INewsContext {
   updatePost: (formData: INews, newId: number) => Promise<void>;
   deletePost: (newId: number) => Promise<void>;
   like: (formData: ILike) => Promise<void>;
-  deslike: (newId: number, postId:number) => Promise<void>;
+  deslike: (newId: number, postId: number) => Promise<void>;
   userNewsList: INews[];
   setUserNewsList: React.Dispatch<React.SetStateAction<INews[]>>;
 }
