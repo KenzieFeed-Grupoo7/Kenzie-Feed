@@ -37,7 +37,7 @@ export const InternalPage = () => {
       like(res);
       console.log("curtiu");
     } else {
-      deslike(likeFind?.id!, res.postId);
+      deslike(likeFind!.id!, res.postId);
       console.log("descurtiu");
     }
   }

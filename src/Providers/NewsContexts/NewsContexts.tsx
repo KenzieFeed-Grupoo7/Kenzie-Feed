@@ -80,7 +80,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post(`/posts/${newId}`, formData, {
+      const { data } = await api.put(`/posts/${newId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
