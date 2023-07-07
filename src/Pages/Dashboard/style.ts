@@ -15,9 +15,9 @@ export const StyledMain = styled.main`
     padding: 1rem;
 
     > div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
   }
 `;

@@ -5,9 +5,10 @@ import {
   INewsProviderProps,
   INews,
   ILike,
-  IUpdateForm,
+  INewsSelect,
 } from "./@types";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const NewsContext = createContext({} as INewsContext);
 
@@ -15,8 +16,9 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [newsList, setNewsList] = useState<INews[]>([]);
   const [userNewsList, setUserNewsList] = useState<INews[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectNews, setSelectNews] = useState<INews>();
+  const [selectNews, setSelectNews] = useState<INewsSelect>();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const userId = Number(localStorage.getItem("@USERID"));
 
@@ -48,7 +50,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get<INewsSelect>(`/posts/${id}?_embed=likes`);
       setSelectNews(data);
     } catch (error) {
       console.log(error);
@@ -76,19 +78,19 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const updatePost = async (formData: IUpdateForm, newId: number) => {
+  const updatePost = async (formData: INews, newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post(`/posts/${newId}`, formData, {
+      await api.put(`/posts/${newId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
+      toast.success("Post editado com sucesso!");
+      setUserNewsList([...userNewsList, formData]);
+      navigate("/dashboard");
     } catch (error) {
-      console.log(formData);
-      console.log(newId);
       console.log(error);
     } finally {
       setLoading(false);
@@ -99,12 +101,11 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.delete(`/posts/${newId}`, {
+      await api.delete(`/posts/${newId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
       const postList = userNewsList.filter((news) => news.id !== newId);
       setUserNewsList(postList);
       toast.info("Post deletado com sucesso!");
@@ -124,7 +125,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
+      getNewById(formData.postId);
     } catch (error) {
       console.log(error);
     } finally {
@@ -132,7 +133,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const deslike = async (newId: number) => {
+  const deslike = async (newId: number, postId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -141,8 +142,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      console.log(data);
+      getNewById(postId);
     } catch (error) {
       console.log(error);
     } finally {

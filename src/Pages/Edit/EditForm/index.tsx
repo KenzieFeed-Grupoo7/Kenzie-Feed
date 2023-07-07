@@ -1,12 +1,12 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useContext } from "react";
 import { NewsContext } from "../../../Providers/NewsContexts/NewsContexts";
 import { StyledButton } from "../../../Styles/buttons";
 import { Input } from "../../../Components/Input";
-import { TEditForm, editFormSchema } from "../EditFormSchema";
+import { editFormSchema } from "../EditFormSchema";
 import { StyledLabel } from "../../../Components/Input/style";
-import { IUpdateForm } from "../../../Providers/NewsContexts/@types";
+import { INews } from "../../../Providers/NewsContexts/@types";
 import { useParams } from "react-router-dom";
 
 export const EditForm = () => {
@@ -14,25 +14,24 @@ export const EditForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TEditForm>({
+  } = useForm<INews>({
     resolver: zodResolver(editFormSchema),
   });
 
-  const { NewsId } = useParams();
+  const { id } = useParams();
 
   const { updatePost } = useContext(NewsContext);
 
-  const submit: SubmitHandler<TEditForm> = (formData) => {
-    const name = localStorage.getItem("@USERNAME");
+  const submit = (formData: INews) => {
+    const userName = localStorage.getItem("@USERNAME");
     const userId = Number(localStorage.getItem("@USERID"));
 
-    const updatedFormData: IUpdateForm = {
+    const newData = {
       ...formData,
       userId: userId,
-      owner: name!,
+      owner: userName!,
     };
-    console.log(NewsId)
-    updatePost(updatedFormData, Number(NewsId));
+    updatePost(newData, Number(id));
   };
 
   return (

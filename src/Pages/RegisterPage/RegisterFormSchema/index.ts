@@ -25,4 +25,5 @@ export const registerFormSchema = z.object({
     path: ['confirm']
 })
 
-export type TRegisterForm = z.infer<typeof registerFormSchema>
+export type TRegisterForm = z.infer<typeof registerFormSchema>;
+

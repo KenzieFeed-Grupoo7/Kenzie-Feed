@@ -20,7 +20,7 @@ export const StyledDiv = styled.div`
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      gap:1rem;
+      gap: 1rem;
     }
     .linkBtn {
       font-family: var(--font-secondary);
@@ -35,8 +35,7 @@ export const StyledDiv = styled.div`
       height: 2.6875rem;
       padding: 0.75rem 1.5rem;
 
-      text-decoration:none;
-      
+      text-decoration: none;
     }
   }
 `;
