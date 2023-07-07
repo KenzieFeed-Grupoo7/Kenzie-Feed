@@ -5,7 +5,7 @@ import {
   INewsProviderProps,
   INews,
   ILike,
-  IUpdateForm,
+  INewsSelect,
 } from "./@types";
 import { toast } from "react-toastify";
 
@@ -15,7 +15,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [newsList, setNewsList] = useState<INews[]>([]);
   const [userNewsList, setUserNewsList] = useState<INews[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectNews, setSelectNews] = useState<INews>();
+  const [selectNews, setSelectNews] = useState<INewsSelect>();
   const [isOpen, setIsOpen] = useState(false);
 
   const userId = Number(localStorage.getItem("@USERID"));
@@ -48,7 +48,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get<INewsSelect>(`/posts/${id}?_embed=likes`);
       setSelectNews(data);
     } catch (error) {
       console.log(error);
@@ -124,7 +124,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
+      getNewById(formData.postId)
     } catch (error) {
       console.log(error);
     } finally {
@@ -132,7 +132,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const deslike = async (newId: number) => {
+  const deslike = async (newId: number,postId:number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -141,7 +141,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
+      getNewById(postId)
     } catch (error) {
       console.log(error);
     } finally {
