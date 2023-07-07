@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { NewsContext } from "../../Providers/NewsContexts/NewsContexts";
 import heart from "../../Assets/heart-01-svgrepo-com.svg";
 import { NewsCard } from "../../Components/NewsCard";
