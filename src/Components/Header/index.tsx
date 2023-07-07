@@ -14,7 +14,9 @@ export const Header = () => {
   return (
     <StyledContainer>
       <StyledHeader>
-        <img src={logo} alt="Logo Kenzie Hub" />
+        <Link to="/">
+          <img src={logo} alt="Logo Kenzie Hub" />
+        </Link>
         <div>
           {user ? (
             <StyledUser>{user.charAt(0).toUpperCase()}</StyledUser>
