@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { StyledLi } from "./style";
 import { INews } from "../../Providers/NewsContexts/@types";
 import { StyledParagraph } from "../../Styles/typography";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { NewsContext } from "../../Providers/NewsContexts/NewsContexts";
 
 interface INewsCardProps {
