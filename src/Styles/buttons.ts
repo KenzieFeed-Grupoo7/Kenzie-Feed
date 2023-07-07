@@ -56,8 +56,7 @@ export const StyledLink = styled(Link)`
   border: 1px solid var(--color-blue);
   background-color: var(--color-blue);
 
-
-  padding: 0.70rem 1.75rem;
+  padding: 0.7rem 1.75rem;
 `;
 
 export const StyledLinkOutline = styled(Link)`
@@ -71,5 +70,5 @@ export const StyledLinkOutline = styled(Link)`
   border: 1px solid var(--color-blue);
   background-color: var(--color-white);
 
-  padding: 0.70rem 1.75rem;
+  padding: 0.7rem 1.75rem;
 `;

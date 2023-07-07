@@ -11,7 +11,7 @@ export const InternalPage = () => {
 
   return (
     <>
-    <Header/>
+      <Header />
       <h4>Por:{selectNews?.owner}</h4>
       <h1>{selectNews?.title}</h1>
       <img src={selectNews?.image} alt="" />
@@ -30,7 +30,7 @@ export const InternalPage = () => {
           ))}
         </ul>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

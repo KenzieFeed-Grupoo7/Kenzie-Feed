@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginFormSchema } from "../LoginFormSchema/index.ts";
 import { Input } from "../../../Components/Input/index.tsx";
-import { StyledForm } from "./index.ts";
+import { StyledForm } from "./style.ts";
 import { StyledButton, StyledLink } from "../../../Styles/buttons.ts";
 import { UserContext } from "../../../Providers/UserContexts/UserContexts.tsx";
 import { useContext } from "react";

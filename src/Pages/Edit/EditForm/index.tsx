@@ -22,13 +22,13 @@ export const EditForm = () => {
   const submit: SubmitHandler<TEditForm> = (formData) => {
     const name = localStorage.getItem("@USERNAME");
     const userId = Number(localStorage.getItem("@USERID"));
-    
+
     const updatedFormData: IUpdateForm = {
       ...formData,
       userId: userId,
-      owner: name!
-    }
-    updatePost(updatedFormData, 2)
+      owner: name!,
+    };
+    updatePost(updatedFormData, 2);
   };
 
   return (

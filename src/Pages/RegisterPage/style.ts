@@ -12,7 +12,7 @@ export const StyledForm = styled.form`
   justify-content: center;
 
   gap: 1rem;
-  max-width:850px;
+  max-width: 850px;
   Input {
     width: 400px;
   }
@@ -35,19 +35,19 @@ export const StyledMain = styled.main`
     color: var(--color-blue);
 
     border-radius: 0.25rem;
-    border:1px solid var(--color-blue);
+    border: 1px solid var(--color-blue);
     background-color: var(--color-white);
     font-size: 0.875rem;
 
     height: 2.6875rem;
     padding: 0.75rem 1.5rem;
-    margin-left:7vw;              
+    margin-left: 7vw;
 
     text-decoration: none;
   }
-  .SubmitContainer{
-    display:flex;
-    justify-content:end;
-    width:100%;
+  .SubmitContainer {
+    display: flex;
+    justify-content: end;
+    width: 100%;
   }
 `;

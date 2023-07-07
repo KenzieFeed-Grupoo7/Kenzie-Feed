@@ -30,8 +30,6 @@ export const StyledModalContainer = styled.div`
     top: 0;
 
     button {
-
     }
   }
-
 `;

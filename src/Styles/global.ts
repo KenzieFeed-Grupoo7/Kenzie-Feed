@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     :root {
@@ -10,4 +10,4 @@ export const GlobalStyle = createGlobalStyle`
         --color-white: #FFFFFF;
         --color-black: #000000;
     }
-`
+`;

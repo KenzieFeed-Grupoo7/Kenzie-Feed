@@ -128,12 +128,11 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.delete(`/likes/${newId}}`, {
+      const { data } = await api.delete(`/likes/${newId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-
       console.log(data);
     } catch (error) {
       console.log(error);
