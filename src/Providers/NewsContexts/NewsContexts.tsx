@@ -76,7 +76,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const updatePost = async (formData: IUpdateForm, newId: number) => {
+  const updatePost = async (formData: INews, newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
