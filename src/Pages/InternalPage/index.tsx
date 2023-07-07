@@ -41,16 +41,15 @@ export const InternalPage = () => {
         <h1>{selectNews?.title}</h1>
         <img className="mainImg" src={selectNews?.image} alt="" />
         <div className="likeContainer">
-          
-          
-          {userId ? <button onClick={() => registerLike()}>
-            <img src={heart} alt="" />
-          </button>
-          :likeArr ? (
+          {userId ? (
+            <button onClick={() => registerLike()}>
+              <img src={heart} alt="" />
+            </button>
+          ) : likeArr ? (
             likeArr + " curtidas"
           ) : (
             <h3>Seja o primeiro a curtir este post</h3>
-          ) }
+          )}
         </div>
         <p>{selectNews?.description}</p>
         <div>

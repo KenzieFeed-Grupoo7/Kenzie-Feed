@@ -27,13 +27,3 @@ export interface IUserContext {
   userLogout: () => void;
   userRegister: (formData: TRegisterForm) => Promise<void>;
 }
-
-// export interface IRegisterFormData {
-//   email: string,
-//   password: string,
-//   name: string
-// }
-
-// export interface IUserRegister {
-
-// }

@@ -26,7 +26,6 @@ export const StyledMain = styled.main`
       border: none;
       background-color: var(--color-white);
       width: 100%;
-
     }
     textarea {
       background-color: var(--color-white);
@@ -43,10 +42,10 @@ export const StyledMain = styled.main`
     }
 
     p {
-        color: red;
-        font-size: clamp(0.50rem, 7vw, 0.75rem);
-        margin-bottom: 0.5rem;
-        height: 0.75rem;
+      color: red;
+      font-size: clamp(0.5rem, 7vw, 0.75rem);
+      margin-bottom: 0.5rem;
+      height: 0.75rem;
     }
   }
 `;

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { INews } from "../../../../Providers/NewsContexts/@types.ts";
 import { StyledTitleThree } from "../../../../Styles/typography.ts";
-import { StyledCard } from "./index.ts";
+import { StyledCard } from "./style.ts";
 import { NewsContext } from "../../../../Providers/NewsContexts/NewsContexts.tsx";
 import edit from "../../../../Assets/edit.svg";
 import deleteImg from "../../../../Assets/delete.svg";

@@ -141,7 +141,6 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-
       console.log(data);
     } catch (error) {
       console.log(error);

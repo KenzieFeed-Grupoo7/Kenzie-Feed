@@ -31,7 +31,7 @@ export const EditForm = () => {
       userId: userId,
       owner: name!,
     };
-    console.log(NewsId)
+    console.log(NewsId);
     updatePost(updatedFormData, Number(NewsId));
   };
 

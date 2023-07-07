@@ -7,7 +7,11 @@ import { Footer } from "../../Components/Footer";
 import { StyledDiv } from "./style";
 import { StyledContainer } from "../../Styles/container";
 import { Link } from "react-router-dom";
-import { StyledParagraph, StyledTitleOne, StyledTitleTwo } from "../../Styles/typography";
+import {
+  StyledParagraph,
+  StyledTitleOne,
+  StyledTitleTwo,
+} from "../../Styles/typography";
 
 export const HomePage = () => {
   const { newsList } = useContext(NewsContext);
@@ -19,11 +23,15 @@ export const HomePage = () => {
         <StyledContainer className="newsContainer">
           <StyledParagraph fontStyle="sm">KENZIE FEED</StyledParagraph>
           <StyledTitleOne>Seja muito bem vindo ao KenzieFeed</StyledTitleOne>
-          <StyledParagraph fontStyle="lg">Fique por dentro das últimas notícias</StyledParagraph>
+          <StyledParagraph fontStyle="lg">
+            Fique por dentro das últimas notícias
+          </StyledParagraph>
           <img src={homeImage} alt="" />
           <div>
             <StyledTitleTwo>Últimas notícias</StyledTitleTwo>
-            <Link to ="/homenews" className="linkBtn">Ver tudo</Link>
+            <Link to="/homenews" className="linkBtn">
+              Ver tudo
+            </Link>
           </div>
           <ul>
             {newsList.map((news) => (

@@ -1,9 +1,9 @@
-import { RegisterForm } from "./RegisterForm"
+import { RegisterForm } from "./RegisterForm";
 
 export const RegisterPage = () => {
-    return(
-        <main>
-            <RegisterForm />
-        </main>
-    )
-}
+  return (
+    <main>
+      <RegisterForm />
+    </main>
+  );
+};

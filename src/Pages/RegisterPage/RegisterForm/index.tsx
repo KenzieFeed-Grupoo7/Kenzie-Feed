@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { Input } from "../../../Components/Input";
 import { UserContext } from "../../../Providers/UserContexts/UserContexts";
 import { Link } from "react-router-dom";
-import { StyledMain, StyledDiv, StyledForm } from "..";
+import { StyledMain, StyledDiv, StyledForm } from "../style.ts";
 import { Footer } from "../../../Components/Footer";
 import { Header } from "../../../Components/Header";
 import { StyledButton } from "../../../Styles/buttons";

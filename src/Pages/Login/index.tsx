@@ -3,12 +3,12 @@ import { Footer } from "../../Components/Footer/index.tsx";
 import { Header } from "../../Components/Header/index.tsx";
 import { StyledContainer } from "../../Styles/container.ts";
 import { LoginForm } from "./LoginForm/index.tsx";
-import { StyledMain } from "./index.ts";
+import { StyledMain } from "./style.ts";
 
 export const LoginPage = () => {
   return (
     <>
-      <Header/>
+      <Header />
       <StyledMain>
         <StyledContainer className="login__container">
           <div className="login__figure">
@@ -22,7 +22,7 @@ export const LoginPage = () => {
           </div>
         </StyledContainer>
       </StyledMain>
-      <Footer/>
+      <Footer />
     </>
   );
 };

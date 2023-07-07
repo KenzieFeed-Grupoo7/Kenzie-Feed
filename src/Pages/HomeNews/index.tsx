@@ -8,10 +8,10 @@ import { StyledUl } from "./style";
 
 export const HomeNews = () => {
   const { newsList } = useContext(NewsContext);
-  console.log(newsList)
+  console.log(newsList);
   return (
     <>
-      <Header/>
+      <Header />
       <StyledContainer>
         <StyledUl>
           {newsList.map((news) => (
@@ -19,7 +19,7 @@ export const HomeNews = () => {
           ))}
         </StyledUl>
       </StyledContainer>
-      <Footer/>
+      <Footer />
     </>
   );
 };
