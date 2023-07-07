@@ -7,7 +7,7 @@ export const StyledFooter = styled.footer`
   background-color: white;
 
   height: 80px;
-  position: fixed;
+  //position: fixed;
   bottom: 0;
 
   div {

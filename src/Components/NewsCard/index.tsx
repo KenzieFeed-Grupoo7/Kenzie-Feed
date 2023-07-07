@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { StyledLi } from "./style";
 import { INews } from "../../Providers/NewsContexts/@types";
 import { StyledParagraph } from "../../Styles/typography";
+import { useContext, useEffect } from "react";
+import { NewsContext } from "../../Providers/NewsContexts/NewsContexts";
 
 interface INewsCardProps {
   news: INews;
@@ -10,8 +12,11 @@ interface INewsCardProps {
 export const NewsCard = ({ news }: INewsCardProps) => {
   const navigate = useNavigate();
 
+  const { setSelectNews } = useContext(NewsContext)
+
   const select = () => {
-    console.log("clicou");
+    console.log("clicou")
+    setSelectNews(news)
     navigate(`/InternalPage/${news.id}`);
   };
 
