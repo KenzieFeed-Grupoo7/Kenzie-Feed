@@ -8,7 +8,6 @@ import { StyledUl } from "./style";
 
 export const HomeNews = () => {
   const { newsList } = useContext(NewsContext);
-  console.log(newsList);
   return (
     <>
       <Header />

@@ -8,6 +8,7 @@ import {
   INewsSelect,
 } from "./@types";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const NewsContext = createContext({} as INewsContext);
 
@@ -17,6 +18,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [loading, setLoading] = useState(false);
   const [selectNews, setSelectNews] = useState<INewsSelect>();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const userId = Number(localStorage.getItem("@USERID"));
 
@@ -80,15 +82,15 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.put(`/posts/${newId}`, formData, {
+      await api.put(`/posts/${newId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
+      toast.success("Post editado com sucesso!");
+      setUserNewsList([...userNewsList, formData]);
+      navigate("/dashboard");
     } catch (error) {
-      console.log(formData);
-      console.log(newId);
       console.log(error);
     } finally {
       setLoading(false);
@@ -99,12 +101,11 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.delete(`/posts/${newId}`, {
+      await api.delete(`/posts/${newId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(data);
       const postList = userNewsList.filter((news) => news.id !== newId);
       setUserNewsList(postList);
       toast.info("Post deletado com sucesso!");

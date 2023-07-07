@@ -27,7 +27,6 @@ export const CreateNewsForm = () => {
       userId: userId,
     };
     addPost(newData);
-    console.log(newData);
   };
 
   return (
@@ -54,13 +53,6 @@ export const CreateNewsForm = () => {
         />
         <p>{errors.description?.message}</p>
       </div>
-
-      {/* <Input
-        type="text"
-        placeholder="Conteúdo do post"
-        {...register("description")}
-        error={errors.description}
-      /> */}
 
       <div className="button__container">
         <StyledButton size="lg" type="submit">

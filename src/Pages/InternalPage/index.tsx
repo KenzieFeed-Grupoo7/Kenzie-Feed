@@ -25,8 +25,6 @@ export const InternalPage = () => {
 
   const footerNews = newsList.filter((news) => news.id !== selectNews?.id);
 
-  console.log(selectNews);
-
   const res = {
     userId: userId,
     postId: newsId,
@@ -35,10 +33,8 @@ export const InternalPage = () => {
   function registerLike() {
     if (!likeCheck) {
       like(res);
-      console.log("curtiu");
     } else {
       deslike(likeFind!.id!, res.postId);
-      console.log("descurtiu");
     }
   }
   return (

@@ -31,7 +31,6 @@ export const EditForm = () => {
       userId: userId,
       owner: userName!,
     };
-    console.log(id);
     updatePost(newData, Number(id));
   };
 
