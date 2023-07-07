@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateNewsSchema } from "../CreateNewsSchema";
 import { useContext } from "react";
 import { NewsContext } from "../../../../Providers/NewsContexts/NewsContexts";
+import { StyledButton } from "../../../../Styles/buttons";
 
 export const CreateNewsForm = () => {
   const {
@@ -43,14 +44,28 @@ export const CreateNewsForm = () => {
         {...register("image")}
         error={errors.image}
       />
-      <Input
+
+      <div className="textarea__container">
+        <textarea
+          placeholder="Conteúdo do post"
+          id="description"
+          rows={5}
+          {...register("description")}
+        />
+        <p>{errors.description?.message}</p>
+      </div>
+
+      {/* <Input
         type="text"
         placeholder="Conteúdo do post"
         {...register("description")}
         error={errors.description}
-      />
-      <div>
-        <button type="submit">Criar Post</button>
+      /> */}
+
+      <div className="button__container">
+        <StyledButton size="lg" type="submit">
+          Criar Post
+        </StyledButton>
       </div>
     </form>
   );

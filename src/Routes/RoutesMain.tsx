@@ -16,13 +16,13 @@ export const RoutesMain = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Route>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/homenews" element={<HomeNews />} />
+      <Route path="/InternalPage/:id" element={<InternalPage />} />
       <Route element={<ProtectedRoutes />}>
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/edit" element={<EditPage />} />
+        <Route path="/edit/:id" element={<EditPage />} />
       </Route>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/InternalPage" element={<InternalPage />} />
-      <Route path="/homenews" element={<HomeNews />} />
     </Routes>
   );
 };

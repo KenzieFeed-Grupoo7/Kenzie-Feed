@@ -1,6 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews, IUpdateForm } from "./@types";
+import {
+  INewsContext,
+  INewsProviderProps,
+  INews,
+  ILike,
+  IUpdateForm,
+} from "./@types";
 import { toast } from "react-toastify";
 
 export const NewsContext = createContext({} as INewsContext);
@@ -42,7 +48,8 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      await api.get<INews>(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
+      setSelectNews(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -80,6 +87,8 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
       });
       console.log(data);
     } catch (error) {
+      console.log(formData);
+      console.log(newId);
       console.log(error);
     } finally {
       setLoading(false);
@@ -106,7 +115,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const like = async (formData: INews) => {
+  const like = async (formData: ILike) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -115,7 +124,6 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-
       console.log(data);
     } catch (error) {
       console.log(error);

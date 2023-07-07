@@ -12,4 +12,9 @@ export const StyledLi = styled.li`
   button:hover {
     border-bottom: 1px solid var(--color-blue);
   }
+  img {
+    border-radius: 25px;
+    height: 250px;
+    width: 550px;
+  }
 `;
