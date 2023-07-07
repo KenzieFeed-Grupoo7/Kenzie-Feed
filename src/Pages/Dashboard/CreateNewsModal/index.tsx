@@ -12,7 +12,7 @@ export const CreateNewsModal = () => {
     <StyledModalContainer>
       <div className="modal__content">
         <div className="content__header">
-          <StyledTitleTwo>Novo Post</StyledTitleTwo>
+          <StyledTitleTwo>Novo post</StyledTitleTwo>
           <button onClick={closeModal}>
             <img src={close} alt="botao fechar" />
           </button>

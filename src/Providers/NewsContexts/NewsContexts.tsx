@@ -1,6 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import { INewsContext, INewsProviderProps, INews, ILike, IUpdateForm } from "./@types";
+import {
+  INewsContext,
+  INewsProviderProps,
+  INews,
+  ILike,
+  IUpdateForm,
+} from "./@types";
 import { toast } from "react-toastify";
 
 export const NewsContext = createContext({} as INewsContext);
@@ -43,7 +49,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
-      setSelectNews(data)
+      setSelectNews(data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -81,6 +87,8 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
       });
       console.log(data);
     } catch (error) {
+      console.log(formData);
+      console.log(newId);
       console.log(error);
     } finally {
       setLoading(false);
@@ -111,7 +119,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post("/likes",formData, {
+      const { data } = await api.post("/likes", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
