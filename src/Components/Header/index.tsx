@@ -14,13 +14,8 @@ export const Header = () => {
   return (
     <StyledContainer>
       <StyledHeader>
-<<<<<<< HEAD
         <Link to={"/"}>
           <img src={logo} alt="Logo Kenzie Hub"/>
-=======
-        <Link to="/">
-          <img src={logo} alt="Logo Kenzie Hub" />
->>>>>>> cfb8962d895b63bf6edfe8263c2e04a93f504e05
         </Link>
         <div>
           {user ? (

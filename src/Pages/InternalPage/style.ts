@@ -12,6 +12,7 @@ export const StyledMain = styled.main`
   .mainImg{
     border-radius:25px;
     }
+  
   .likeContainer{
     display:flex;
     width:100%;
@@ -19,10 +20,12 @@ export const StyledMain = styled.main`
     padding-left:15vw;
     gap:1rem;
     }
+  
   .likeContainer> button> img{
     width:30px;
     height: auto;
     }
+  
   ul {
     width: 50vw;
     height: 370px;
@@ -30,12 +33,13 @@ export const StyledMain = styled.main`
     flex-wrap: nowrap;
     gap: 1rem;
     overflow-x: auto;
-
   }
+
   figure > img {
     max-width: 500px;
     max-height: 350px;
   }
+
   figure {
     width: 500px;
     height: 350px;
@@ -43,7 +47,4 @@ export const StyledMain = styled.main`
     justify-content: center;
     align-items: center;
   }
-`
-
-
 `;
