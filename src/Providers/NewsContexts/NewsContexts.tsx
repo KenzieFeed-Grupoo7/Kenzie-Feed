@@ -76,7 +76,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     }
   };
 
-  const updatePost = async (formData: IUpdateForm, newId: string) => {
+  const updatePost = async (formData: IUpdateForm, newId: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
@@ -85,10 +85,10 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(formData);
-      console.log(newId);
       console.log(data);
     } catch (error) {
+      console.log(formData);
+      console.log(newId);
       console.log(error);
     } finally {
       setLoading(false);
