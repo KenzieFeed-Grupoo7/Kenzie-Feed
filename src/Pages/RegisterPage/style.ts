@@ -1,52 +1,55 @@
 import { styled } from "styled-components";
 
-export const StyledForm = styled.form`
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  gap: 1rem;
-  max-width: 850px;
-  Input {
-    width: 400px;
-  }
-  button {
-    margin-top: 0.5rem;
-  }
-`;
-export const StyledDiv = styled.div`
+export const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
-  margin-bottom: 1rem;
-`;
 
-export const StyledMain = styled.main`
-  .LinkBtn {
-    font-family: var(--font-secondary);
-    font-weight: 700;
-    color: var(--color-blue);
-
-    border-radius: 0.25rem;
-    border: 1px solid var(--color-blue);
-    background-color: var(--color-white);
-    font-size: 0.875rem;
-
-    height: 2.6875rem;
-    padding: 0.75rem 1.5rem;
-    margin-left: 7vw;
-
-    text-decoration: none;
+  .register__nav {
+    padding-bottom: 2rem;
   }
-  .SubmitContainer {
+
+  .register__header {
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     width: 100%;
+    gap: 1rem;
+  }
+
+  form div {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  form .submit__container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  @media (max-width: 900px) {
+    form {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+
+    form .submit__container {
+      width: 100%;
+      max-width: 400px;
+    }
   }
 `;

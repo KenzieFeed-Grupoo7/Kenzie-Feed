@@ -1,24 +1,55 @@
 import styled from "styled-components";
 
-export const StyledDiv = styled.div`
-  .newsContainer {
+export const StyledMain = styled.main`
+  height: 75vh;
+  overflow: auto;
+
+  .news__container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    text-align: center;
+    align-items: center;
 
-    div {
+    .news__header {
+      gap: 1rem;
+    }
+
+    .news__header {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .news__header img {
       width: 100%;
+      max-width: 1200px;
+      padding-top: 1rem;
+    }
+
+    .news__last {
+      display: flex;
       flex-direction: row;
       justify-content: space-between;
+
+      width: 100%;
+      padding-top: 4rem;
     }
+
+    .news__last-button {
+      display: flex;
+      align-items: center;
+    }
+
     ul {
       display: flex;
       flex-direction: row;
+      justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
+      width: 100%;
       gap: 1rem;
+      padding-top: 2rem;
     }
+
     .linkBtn {
       font-family: var(--font-secondary);
       font-weight: 700;
@@ -33,6 +64,17 @@ export const StyledDiv = styled.div`
       padding: 0.75rem 1.5rem;
 
       text-decoration: none;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .news__container .news__last {
+      flex-direction: column;
+    }
+    .news__container .news__last .news__last-button {
+      width: 100%;
+      justify-content: end;
+      padding-bottom: 2rem;
     }
   }
 `;

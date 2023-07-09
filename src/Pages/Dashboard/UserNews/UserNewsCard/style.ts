@@ -5,6 +5,8 @@ export const StyledCard = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 150px;
+  flex-wrap: wrap;
+  padding-top: 2rem;
 
   .img__container {
     display: flex;
@@ -26,5 +28,12 @@ export const StyledCard = styled.div`
   button {
     border: none;
     background-color: none;
+  }
+
+  @media (max-width: 600px) {
+    .button__container {
+      width: 100%;
+      justify-content: end;
+    }
   }
 `;

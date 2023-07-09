@@ -15,6 +15,12 @@ export const StyledHeader = styled.header`
     align-items: center;
     gap: 1rem;
   }
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    gap: 1rem;
+    height: 8rem;
+  }
 `;
 
 export const StyledUser = styled.div`

@@ -2,7 +2,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { loginFormSchema } from "../LoginFormSchema/index.ts";
 import { Input } from "../../../Components/Input/index.tsx";
-import { StyledForm } from "./style.ts";
 import { StyledButton, StyledLink } from "../../../Styles/buttons.ts";
 import { UserContext } from "../../../Providers/UserContexts/UserContexts.tsx";
 import { useContext } from "react";
@@ -20,7 +19,7 @@ export const LoginForm = () => {
   const { loginSubmit, loading } = useContext(UserContext);
 
   return (
-    <StyledForm onSubmit={handleSubmit(loginSubmit)}>
+    <form onSubmit={handleSubmit(loginSubmit)}>
       <h1>Acesse o KenzieFeed</h1>
       <p>Preencha os campos corretamente para fazer login</p>
       <Input
@@ -41,6 +40,6 @@ export const LoginForm = () => {
       <p>Não é cadastrado</p>
       <StyledLink to="/register">Cadastre-se</StyledLink>
       {loading ? <p>Carregando...</p> : null}
-    </StyledForm>
+    </form>
   );
 };

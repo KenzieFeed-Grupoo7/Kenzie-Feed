@@ -1,12 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { api } from "../../Services/Api";
-import {
-  INewsContext,
-  INewsProviderProps,
-  INews,
-  ILike,
-  INewsSelect,
-} from "./@types";
+import { INewsContext, INewsProviderProps, INews, ILike } from "./@types";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +10,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const [newsList, setNewsList] = useState<INews[]>([]);
   const [userNewsList, setUserNewsList] = useState<INews[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectNews, setSelectNews] = useState<INewsSelect>();
+  const [selectNews, setSelectNews] = useState<INews>();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -50,7 +44,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
   const getNewById = async (id: number) => {
     try {
       setLoading(true);
-      const { data } = await api.get<INewsSelect>(`/posts/${id}?_embed=likes`);
+      const { data } = await api.get<INews>(`/posts/${id}?_embed=likes`);
       setSelectNews(data);
     } catch (error) {
       console.log(error);
@@ -120,7 +114,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.post("/likes", formData, {
+      await api.post("/likes", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -137,7 +131,7 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("@TOKEN");
-      const { data } = await api.delete(`/likes/${newId}`, {
+      await api.delete(`/likes/${newId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

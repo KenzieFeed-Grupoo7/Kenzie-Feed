@@ -1,40 +1,61 @@
 import styled from "styled-components";
 
 export const StyledMain = styled.main`
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  .mainImg {
-    border-radius: 25px;
+
+  .internal__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
-  .likeContainer {
+
+  .internal__new {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .internal__new img {
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .new__like {
     display: flex;
     width: 100%;
     justify-content: start;
-    padding-left: 15vw;
+  }
+
+  .new__like img {
+    width: 22px;
+    height: 22px;
+    margin-right: 0.25rem;
+  }
+
+  .new__description {
+    padding-bottom: 2rem;
+  }
+
+  .internal__more {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
     gap: 1rem;
   }
-  .likeContainer > button > img {
-    width: 30px;
-  }
-  ul {
-    width: 50vw;
-    height: 370px;
+
+  .internal__more ul {
+    width: 100%;
+    max-width: 1200px;
     display: flex;
     flex-wrap: nowrap;
-    gap: 1rem;
-    overflow-x: auto;
-  }
-  figure > img {
-    max-width: 500px;
-    max-height: 350px;
-  }
-  figure {
-    width: 500px;
-    height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow-x: scroll;
+    gap: 2rem;
   }
 `;

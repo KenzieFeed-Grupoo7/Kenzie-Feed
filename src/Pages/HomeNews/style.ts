@@ -1,13 +1,21 @@
 import styled from "styled-components";
 
-export const StyledUl = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+export const StyledMain = styled.main`
+  .homeNews__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-  li {
-    max-width: 530px;
-    min-width: 300px;
+  h1 {
+    padding-left: 1rem;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    height: 100%;
   }
 `;
