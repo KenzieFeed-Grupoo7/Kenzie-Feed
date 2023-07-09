@@ -11,13 +11,11 @@ export const LoginPage = () => {
       <Header />
       <StyledMain>
         <StyledContainer className="login__container">
-          <div className="login__figure">
-            <img
-              src={imgLogin}
-              alt="Imagem mostrando um notebook, uma xícara vazia e uma agenda."
-            />
-          </div>
-          <div className="login__form">
+          <img
+            src={imgLogin}
+            alt="Imagem mostrando um notebook, uma xícara vazia e uma agenda."
+          />
+          <div className="login__content">
             <LoginForm />
           </div>
         </StyledContainer>
