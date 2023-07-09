@@ -7,6 +7,7 @@ export const ResetStyle = createGlobalStyle`
         margin: 0;
     }
 
+
     button {
         cursor: pointer;
         background: transparent;
@@ -21,9 +22,5 @@ export const ResetStyle = createGlobalStyle`
         border-radius: 0;
         border: none;
         background: transparent;
-    }
-
-    img {
-        max-width: 100%;
     }
 `;

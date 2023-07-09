@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const StyledLi = styled.li`
-  width: 500px;
-  min-width: 400px;
+  min-width: 320px;
+  width: 100%;
+  max-width: 500px;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 0.5rem;
   button {
     color: var(--color-blue);
   }
@@ -17,5 +19,6 @@ export const StyledLi = styled.li`
     border-radius: 25px;
     height: 250px;
     width: 550px;
+    max-width: 100%;
   }
 `;
