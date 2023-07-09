@@ -9,21 +9,21 @@ interface INewsCardProps {
   news: INews;
 }
 
-export const NewsCard = ({ news }: INewsCardProps) => {
+export const NewsCard = (props: INewsCardProps) => {
   const navigate = useNavigate();
 
   const { setSelectNews } = useContext(NewsContext);
 
   const select = () => {
-    setSelectNews(news);
-    navigate(`/InternalPage/${news.id}`);
+    setSelectNews(props.news);
+    navigate(`/InternalPage/${props.news.id}`);
   };
 
   return (
     <StyledLi>
-      <img src={news.image} alt="Imagem da noticia" />
-      <StyledParagraph fontStyle="sm">Por: {news.owner}</StyledParagraph>
-      <h3>{news.title}</h3>
+      <img src={props.news.image} alt="Imagem da noticia" />
+      <StyledParagraph fontStyle="sm">Por: {props.news.owner}</StyledParagraph>
+      <h3>{props.news.title}</h3>
       <button onClick={select}>Leia Mais</button>
     </StyledLi>
   );

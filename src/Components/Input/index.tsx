@@ -1,10 +1,9 @@
 import { ForwardedRef, forwardRef, InputHTMLAttributes } from "react";
-import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { StyledFieldBox, StyledInput, StyledLabel } from "./style";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
+  error?: { message?: string };
 }
 
 export const Input = forwardRef(

@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { NewsContext } from "../../Providers/NewsContexts/NewsContexts";
+import { NewsContext } from "../../Providers/NewsContexts/NewsContexts.tsx";
 import { NewsCard } from "../../Components/NewsCard";
 import { Header } from "../../Components/Header";
 import { Footer } from "../../Components/Footer";
 import { StyledContainer } from "../../Styles/container";
-import { StyledUl } from "./style";
+import { StyledUl } from "./style.ts";
 
 export const HomeNews = () => {
   const { newsList } = useContext(NewsContext);
