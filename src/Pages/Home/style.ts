@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const StyledMain = styled.main`
-  height: 75vh;
+  height: 100%;
+  width: 100%;
   overflow: auto;
 
   .news__container {
@@ -17,12 +18,16 @@ export const StyledMain = styled.main`
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
     }
 
     .news__header img {
       width: 100%;
       max-width: 1200px;
+      height: 385px;
       padding-top: 1rem;
+      border-radius: 3rem;
+      object-fit: cover;
     }
 
     .news__last {
