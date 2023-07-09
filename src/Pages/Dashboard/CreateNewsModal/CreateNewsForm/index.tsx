@@ -16,13 +16,15 @@ export const CreateNewsForm = () => {
     resolver: zodResolver(CreateNewsSchema),
   });
 
-  const { addPost } = useContext(NewsContext);
+  const { addPost, userNewsList } = useContext(NewsContext);
+
   const userName = String(localStorage.getItem("@USERNAME"));
   const userId = Number(localStorage.getItem("@USERID"));
 
   const submit = (formData: INews) => {
     const newData = {
       ...formData,
+      id: userNewsList.length,
       owner: userName,
       userId: userId,
     };

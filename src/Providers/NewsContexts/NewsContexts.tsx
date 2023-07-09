@@ -82,7 +82,8 @@ export const NewsProvider = ({ children }: INewsProviderProps) => {
         },
       });
       toast.success("Post editado com sucesso!");
-      setUserNewsList([...userNewsList, formData]);
+      const postList = userNewsList.filter((news) => news.id !== newId);
+      setUserNewsList([...postList, formData]);
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
