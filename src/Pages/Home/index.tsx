@@ -45,7 +45,6 @@ export const HomePage = () => {
           </ul>
         </StyledContainer>
       </StyledMain>
-
       <Footer />
     </>
   );
